@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-
-import Layout from "../components/ui/Layout.js";
-import './App.scss'
-import Home from "../pages/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import Layout from "../components/ui/Layout.js";
+import Home from "../pages/Home";
+import './App.scss'
+import LoginPage from "../pages/LoginPage";
 
 export function setMainStorage(Obj) {
 	const mainStorage = JSON.parse(localStorage.getItem("MainStorage") || "{}");
@@ -23,6 +23,7 @@ function App() {
 			<Layout>
 				<Switch>
 					<Route exact path="/"><Home/></Route>
+					<Route exact path="/signin"><LoginPage/></Route>
 				</Switch>
 			</Layout>
 		</Router>

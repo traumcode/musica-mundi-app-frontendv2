@@ -3,7 +3,9 @@ import React from 'react';
 function Footer(props) {
 	return (
 		<div>
-			<h1>DIN NOU MUIE</h1>
+			<footer>
+				<h1>FOOTER</h1>
+			</footer>
 		</div>
 	);
 }

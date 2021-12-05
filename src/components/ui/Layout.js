@@ -4,11 +4,13 @@ import Footer from '../Footer'
 
 function Layout(props) {
 	return (
-		<div>
-			<div>
-				<Header/>
-				<main>{props.children}</main>
-			</div>
+		<div style={{ overflow: 'hidden' }}>
+			<Header/>
+			<section>
+				<div className="container main-container">
+					<main>{props.children}</main>
+				</div>
+			</section>
 			<Footer/>
 		</div>
 	);

@@ -1,3 +1,95 @@
-@import './scss/config';
+@import '../scss/config';
 @import '~bootstrap/scss/bootstrap';
 
+.App {
+  background-color: $body-color;
+}
+
+.Header {
+  background-color: $primary-color;
+  height: 400px;
+  width: 100vw;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 49%);
+  @include media-breakpoint-only(xs) {
+    height: 100px;
+  }
+  @include media-breakpoint-down('sm') {
+    height: 300px;
+  }
+}
+
+.main-container {
+  padding: 0 50px 50px;
+}
+
+.sidenav {
+  height: 100%;
+  overflow-x: hidden;
+  padding-top: 20px;
+  background: #ff550b;
+  box-shadow: 11px -14px 0px 0px;
+  width: 400px;
+}
+
+.main {
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  flex-direction: row;
+  justify-content: flex-start
+
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-form {
+    margin-top: 10%;
+  }
+
+  .register-form {
+    margin-top: 10%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main {
+    margin-left: 40%;
+    justify-content: center;
+  }
+
+  .sidenav {
+    margin-top: 110px;
+    width: 400px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+}
+
+.input-login {
+  min-width: 380px;
+}
+
+.login-main-text {
+  margin-top: 20%;
+  padding: 60px;
+  color: #fff;
+}
+
+.login-main-text h2 {
+  font-weight: 300;
+}
+
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
+}

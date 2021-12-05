@@ -2,10 +2,10 @@ import React from 'react';
 
 function Header(props) {
 	return (
-		<div>
-			<div className="container">
-				<h1>sad</h1>
-				<button className="bg-danger">sad</button>
+		<div className="Header d-flex p-2">
+			<h1 className="text-dark font-weight-bold display-1">LOOP</h1>
+			<div>
+				
 			</div>
 		</div>
 	);
