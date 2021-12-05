@@ -3,6 +3,9 @@
 @import 'scss/config';
 @import 'variables';
 @import '~bootstrap/scss/bootstrap';
+#root{
+  height:95vh;
+}
 
 body {
   margin-top: 1140px;

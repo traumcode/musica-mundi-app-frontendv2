@@ -4,6 +4,7 @@ import Layout from "../components/ui/Layout.js";
 import Home from "../pages/Home";
 import './App.scss'
 import LoginPage from "../pages/LoginPage";
+import LoginPagev2 from "../pages/LoginPagev2";
 
 export function setMainStorage(Obj) {
 	const mainStorage = JSON.parse(localStorage.getItem("MainStorage") || "{}");
@@ -24,6 +25,7 @@ function App() {
 				<Switch>
 					<Route exact path="/"><Home/></Route>
 					<Route exact path="/signin"><LoginPage/></Route>
+					<Route exact path="/signin2"><LoginPagev2/></Route>
 				</Switch>
 			</Layout>
 		</Router>
