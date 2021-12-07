@@ -1,24 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:200,300,400,700');
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 
 
-$body-color: black;
+$body-color: #191919;
 $body-bg: #d5d5d5;
 $primary-color: #0de0e8;
 $second-color: #00ffea;
+$primary-color-gradient: linear-gradient(230deg, rgba(53,222,255,1) 51%, rgba(0,159,190,1) 100%);
+
+$picture-background: #a12f2f url(https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg) no-repeat;
 
 $utilities: ( "custom-margin-top": ( property: margin-top, class: mt, values: ( 0: 0, 1: 0.4rem, 2: 0.8rem, 3: 1.2rem, 4: 1.6rem, 5: 2rem, ), ), );
 
-
-$headings-font-family:Comfortaa;
+$font-primary:Comfortaa;
+$headings-font-family:Raleway;
 
 $enable-grid-classes:false;
 $primary:#FF550B;
 $secondary:#303030;
 $success:#015668;
+$danger2:#e12b45e3;
 $danger:#FF304F;
 $info:#0F81C7;
-$warning:#0DE2EA;
+$warning: #0de0e8;
 $light:#e8e8e8;
 $dark:#000000;
 
@@ -28,8 +36,7 @@ $dark:#000000;
 $enable-shadows:true;
 $gray-300:#000000;
 $gray-800:#555555;
-$body-bg:$black;
-$body-color:#cccccc;
+$body-bg:#191919;
 $link-color:#f0f0f0;
 $link-hover-color:darken($link-color,20%);
 $font-size-base:1.1rem;
@@ -80,6 +87,8 @@ $list-group-disabled-color:$gray-800;
 $list-group-disabled-bg:$black;
 $list-group-action-color:$white;
 $breadcrumb-active-color:$gray-500;
+
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 .navbar-dark.bg-primary {background-color:#111111 !important;}

@@ -2,31 +2,31 @@ import React from 'react';
 
 function LoginPage(props) {
 	return (
-		<div>
-			<div className="sidenav">
-				<div className="login-main-text">
-					<h2>Application<br/> Login Page</h2>
-					<p>Login or register from here to access.</p>
-				</div>
-			</div>
-			<div className="main">
-				<div className="col-md-6 col-sm-12 w-50 input-login" >
-					<div className="login-form">
-						<form>
-							<div className="form-group">
-								<label>User Name</label>
-								<input type="text" className="form-control" placeholder="User Name"/>
+		<div className="container login-container">
+			<div className="row">
+				<div className="col-md-6">
+					<div className="card login-card">
+						<h1 className="login-title">waver~</h1>
+						<form onSubmit={(e) => e.preventDefault()} className="box">
+							<h1>log in</h1>
+							<p className="text-muted">please enter your login and password</p>
+							<input type="text" name="username" placeholder="Username"/>
+							<input type="password" name="password" placeholder="Password"/>
+							<a className="forgot text-muted" href="https://muie.com">forgot password?</a>
+							<input type="submit" name="" value="login" href="localhost:3000"/>
+							<div className="col-md-12">
+								<ul className="social-network social-circle">
+									<li><a href="https://muie.com" className="icoFacebook" title="Facebook"><i className="fab fa-facebook-f"/></a></li>
+									<li><a href="https://muie.com" className="icoTwitter" title="Twitter"><i className="fab fa-twitter"/></a></li>
+									<li><a href="https://muie.com" className="icoGoogle" title="Google +"><i className="fab fa-google-plus"/></a></li>
+								</ul>
 							</div>
-							<div className="form-group">
-								<label>Password</label>
-								<input type="password" className="form-control" placeholder="Password"/>
-							</div>
-							<button type="submit" className="btn btn-black">Login</button>
-							<button type="submit" className="btn btn-secondary">Register</button>
 						</form>
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 	);
 }
