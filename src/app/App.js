@@ -15,11 +15,20 @@ export function setMainStorage(Obj) {
 
 
 function App() {
-	const [currentPageTitle, setCurrentPageTitle] = useState("waver~");
+	const [ currentPageTitle ] = useState("WAVr~");
 
 	useEffect(() => {
-		console.log(currentPageTitle);
-	})
+		window.addEventListener("storage", () => {
+			let mainStorage = JSON.parse(window.localStorage.getItem("MainStorage") || "{}");
+			if (mainStorage.isMenuOn === undefined) {
+				mainStorage.isMenuOn = false;
+				setMainStorage({ isMenuOn: false })
+			}
+		})
+		window.dispatchEvent(new Event("storage"))
+
+		return () => console.log("Cleared")
+	}, [ currentPageTitle ])
 
 	return (
 		<Router>
