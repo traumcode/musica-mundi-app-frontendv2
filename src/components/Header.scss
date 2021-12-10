@@ -109,16 +109,26 @@ li, li > span {
 }
 
 .current-page-logo{
-  font-size: 50px;
+  font-size: 100px;
   color: wheat;
   font-weight:lighter;
   margin-left: 240px;
 
 }
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-down(xl) {
   .current-page-logo {
-    font-size: 100px;
+    font-size: 50px;
   }
+  .menu-buttons li {
+    font-size: 20px;
+  }
+  .soundwave-logo{
+    font-size:90px;
+  }
+  .header-title-h {
+    font-size:40px!important;
+  }
+
 }
 
 .logo-and-title {

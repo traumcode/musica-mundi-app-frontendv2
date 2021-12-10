@@ -188,15 +188,110 @@ a.socialIcon:hover,
   //background-image: repeating-linear-gradient(45deg, #53b6f300, #1c969b6b 1px);
   //border: 1px solid #6bc1c4;
 
+  //width: 100%;
+  //height: 400px;
+  //background-image: repeating-linear-gradient(236deg, #d1cbe5, #1c969b54 4px);
+  //border: 1px solid #6bc1c4;
+
   width: 100%;
   height: 400px;
-  background-image: repeating-linear-gradient(236deg, #d1cbe5, #1c969b54 4px);
+  background-image: repeating-linear-gradient(236deg, #212930f5, #212529 4px);
   border: 1px solid #6bc1c4;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
 }
 .discover-content {
   margin: 0 10vw;
   height: 100vh;
   background-color: white;
 }
+
+.searchBox1 {
+  margin-top: 242px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 10%;
+}
+
+.searchInput1 {
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: 1px solid #f5deb3;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-size: 26px;
+  color: #d7cec8;
+  outline: none;
+  transition: 0.7s;
+}
+
+.searchBox1:hover input {
+  width: 450px;
+  height: 70px;
+  /*background: #343838;*/
+  background: white;
+  border-radius: 0;
+  border: 1px solid #00dffc;
+  color:black
+}
+
+.search-bar {
+  position: absolute;
+  font-size: 26px;
+  color: #00dffc;
+  transition: .2s;
+}
+
+.searchBox1:hover .search-bar {
+  opacity: 0;
+  z-index: -1;
+}
+
+/*  BUILT-IN STYLES FOR PLACEHOLDER */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: transparent;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: transparent;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: transparent;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: transparent;
+}
+
+:hover::-webkit-input-placeholder {
+  color: #B0A18F;
+  transition: .9s;
+}
+
+:hover::-moz-placeholder { /* Firefox 19+ */
+  color: #B0A18F;
+  transition: .9s;
+}
+
+:hover:-ms-input-placeholder { /* IE 10+ */
+  color: #B0A18F;
+  transition: .9s;
+}
+
+:hover:-moz-placeholder { /* Firefox 18- */
+  color: #B0A18F;
+  transition: .9s;}
 
 
