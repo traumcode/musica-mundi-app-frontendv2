@@ -3,9 +3,13 @@
 'themes/waver';
 
 @import
-'layout/header';
+'layout/header',
+'layout/layout';
 
 @import
 'pages/discovery',
 'pages/signin';
+
+@import
+'components/loadingSpinner';
 

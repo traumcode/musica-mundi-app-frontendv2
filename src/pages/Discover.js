@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { genresAPI, getSearchDetailsAPI } from "../apis/fetchData";
-import { Link as LinkPrime, useHistory } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
-
-
+import { useHistory } from "react-router-dom";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import { css } from "@emotion/react";
 
 
 function Discover(props) {
@@ -45,16 +44,20 @@ function Discover(props) {
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
-			setIsLoading(false);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 5000);
 		});
-	}, [searchGenre, searchArtist, searchStyle, currentPage, history]);
+	}, [ searchGenre, searchArtist, searchStyle, currentPage, history ]);
 
 	return (
-		<div className="discover-container">
-
-			<div className="discover-content">
-
-			</div>
+		<div className="discover-content">
+			<h1>DISCOVER PAGE</h1>
+			{isLoading ? (
+				<PacmanLoader color={"#6de5c2"} loading={isLoading} size={50}/>
+			) : (
+				<h1>Finished loading</h1>
+			)}
 		</div>
 	);
 }

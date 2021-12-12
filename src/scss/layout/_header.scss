@@ -18,15 +18,31 @@ $btn-border-radius: 0;
 }
 
 .navbar-nav {
+  position: absolute;
+  grid-gap: 123px;
+  padding: 0;
+  margin: 0;
+  bottom: 58px;
+  list-style: none;
+}
+
+.navbar-nav-up {
   flex-direction: row;
   margin-bottom: 0;
   margin-right: 20px;
   align-items: center;
+  position: absolute;
+  grid-gap: 8vw;
+  display: flex;
+  padding-left: 0;
+  left: 34%;
+  list-style: none;
 }
 
 .navbar-title {
   margin: 10px;
   color: $warning;
+  font-family: inherit;
 }
 
 .navbar-title-logo {
@@ -47,9 +63,9 @@ $btn-border-radius: 0;
 }
 
 .nav-item-s {
-  color: $warning;
+  color: #84ffd9;
   margin: 20px 10px 20px 8px;
-  font-size: calc(1rem + 0.4vw);
+  font-size: calc(1.1rem + 0.4vw);
 }
 
 .navbar-link {
@@ -57,27 +73,34 @@ $btn-border-radius: 0;
 }
 
 .container-md {
-  background: url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center #0cc790d9;
+  background: #41ffb4ab url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat;
   height: 593px;
   width: 100%;
   top: 60px;
+  background-position: bottom;
   display: flex;
+  background-size: cover;
+  /* box-shadow: 13px 15px 17px 2px #7db3b270; */
   position: absolute;
-  background-blend-mode: soft-light;
-  align-content: center;
-  flex-direction: column;
+  background-blend-mode: darken;
   align-items: center;
   justify-content: space-around;
 }
 
+.current-page-title {
+  color: #275859;
+  position: absolute;
+  font-family: 'Raleway', serif;
+  font-size: 150px;
+}
+
 .header-menu {
   flex-direction: row;
-  margin-bottom: 0;
-  margin-right: 20px;
-  align-items: center;
 }
 
 .header-link {
   text-decoration: none;
-  color: $secondary;
+  color: #00877b;
+  font-size: 30px;
+  font-weight: 200;
 }

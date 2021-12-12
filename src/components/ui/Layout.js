@@ -7,7 +7,7 @@ function Layout(props) {
 		<div style={{ overflow: 'hidden' }}>
 			<Header currentPageTitle={props.currentPageTitle}/>
 			<section>
-				<div className="container">
+				<div className="container main-container">
 					<main>{props.children}</main>
 				</div>
 			</section>

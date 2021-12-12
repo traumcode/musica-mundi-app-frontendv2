@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Header(props) {
 	const [ currentPageTitle, setCurrentPageTitle ] = useState("");
-	const [ user ] = useState("");
+	const [ user ] = useState("s");
 
 
 	useEffect(() => {
@@ -21,7 +21,7 @@ function Header(props) {
 		}
 		return logos[`${currentPageTitle}`]
 	}
-const primary_color = "#35e8aa"
+	const primary_color = "#35e8aa"
 	return (
 		<header>
 			<nav className="navbar">
@@ -32,9 +32,12 @@ const primary_color = "#35e8aa"
 						<path id="Shape 1" className="s0" style={{ fill: `${primary_color}` }} d="m246.05 787.03l2-120l138-409l15 65l-155 464z"/>
 						<path id="Shape 2" className="s0" style={{ fill: `${primary_color}` }} d="m265.05 729.03l-23 75l-51-401l29.63-42.86l44.37 368.86z"/>
 						<path id="Shape 3" className="s0" style={{ fill: `${primary_color}` }} d="m0 402.03l-7.95-41l229-1l-18 43l-203.05-1z"/>
-						<path id="Shape 4" className="s0" style={{ fill: `${primary_color}` }} d="m363.81 321.21l22.2-66.4l117.67 505.54l-19.67 73l-120.21-512.14z"/>
-						<path id="Shape 5" className="s0" style={{ fill: `${primary_color}` }} d="m484.21 839.21l-16.6-77.2l190.07-682.33l16 70.67l-189.47 688.86z"/>
-						<path id="Shape 6" className="s0" style={{ fill: `${primary_color}` }} d="m638.51 150.26l19.5-72.5l136 548.75l-15.75 80.5l-139.75-556.75z"/>
+						<path id="Shape 4" className="s0" style={{ fill: `${primary_color}` }}
+								d="m363.81 321.21l22.2-66.4l117.67 505.54l-19.67 73l-120.21-512.14z"/>
+						<path id="Shape 5" className="s0" style={{ fill: `${primary_color}` }}
+								d="m484.21 839.21l-16.6-77.2l190.07-682.33l16 70.67l-189.47 688.86z"/>
+						<path id="Shape 6" className="s0" style={{ fill: `${primary_color}` }}
+								d="m638.51 150.26l19.5-72.5l136 548.75l-15.75 80.5l-139.75-556.75z"/>
 						<path id="Shape 7" className="s1" style={{
 							fill: `${primary_color}`,
 							stroke: "#60e2b9",
@@ -44,11 +47,11 @@ const primary_color = "#35e8aa"
 						491.5-491.5 491.5z"/>
 						<path id="Shape 8" className="s0" d="m842.26 396.51l-28.25-34l186.25-0.25l-0.25 35l-157.75-0.75z"/>
 					</svg>
-					<h1 className="navbar-title">WAVr</h1>
+					<h1 className="navbar-title">{currentPageTitle}</h1>
 				</div>
 
 				{user === "" ? (
-					<ul className="navbar-nav">
+					<ul className="navbar-nav-up" >
 						<Link className="navbar-link" to="/collections">
 							<li className="nav-item">sign in</li>
 						</Link>
@@ -56,36 +59,36 @@ const primary_color = "#35e8aa"
 							<li className="nav-item">about us</li>
 						</Link>
 					</ul>) : (
-					<ul className="navbar-nav">
-						<Link className="navbar-link" to="/manifest">
+					<ul className="navbar-nav-up" >
+						<Link className="navbar-link" to={`/${user}/profile/`}>
 							<li className="nav-item-s"><i className="bi bi-person-circle"/></li>
 						</Link>
-						<Link className="navbar-link" to="/collections">
-							<li className="nav-item-s"><i className="bi bi-soundwave"/></li>
+						<Link className="navbar-link" to={`/${user}/wishlist/`}>
+							<li className="nav-item-s" style={{ fontSize: "calc(2.3rem + 0.4vw)" }}><i className="bi bi-soundwave"/></li>
 						</Link>
-						<Link className="navbar-link" to="/collections">
+						<Link className="navbar-link" to={`/${user}/cart/`}>
 							<li className="nav-item-s"><i className="bi bi-bag"/></li>
 						</Link>
 						<Link className="navbar-link" to="/collections">
-							<li className="nav-item-s"><i className="bi bi-list"/></li>
+							<li className="nav-item-s" style={{ fontSize: "calc(2.3rem + 0.4vw)" }}><i className="bi bi-list"/></li>
 						</Link>
 					</ul>
 				)}
 			</nav>
 			<div className="container-md">
-				<h1>Header container </h1>
+				<h1 className="current-page-title">WAVER</h1>
 				<ul className="header-menu navbar-nav">
-					<Link className="header-link nav-item-s" to="/manifest">
+					<Link className="header-link nav-item-s" to="/home">
 						<li>home</li>
 					</Link>
-					<Link className="header-link nav-item-s " to="/collections">
-						<li >discover</li>
+					<Link className="header-link nav-item-s " to="/discover">
+						<li>discover</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/collections">
-						<li >collections</li>
+						<li>collections</li>
 					</Link>
-					<Link className="header-link nav-item-s" to="/collections">
-						<li >manifest</li>
+					<Link className="header-link nav-item-s" to="/manifest">
+						<li>manifest</li>
 					</Link>
 				</ul>
 			</div>
