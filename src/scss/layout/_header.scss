@@ -1,17 +1,10 @@
-.navbar-title {
-  margin: 10px;
-  color: #60e2b9;
-}
-
 .navbar {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: .6rem;
-  padding-bottom: .6rem;
-  background: $secondary;
+  height: 102px;
+  margin: 3px;
+  -webkit-clip-path: polygon(1% 1%, 99% 10%, 100% 87%, 0% 100%);
+  /* clip-path: polygon(0.3% 0%, 99.5% 14%, 100% 100%, 0% 100%); */
+  background: #27282a;
+  align-content: center;
 }
 
 .navbar-nav {
@@ -19,17 +12,37 @@
   flex-direction: row;
   padding-left: 10px;
   margin-bottom: 0;
-  list-style: none
+  list-style: none;
+  margin-right: 20px;
+  border: 1px dotted rgba(32, 203, 152, 0.5);
+  background-image: linear-gradient(216deg, #27282a, #60e2b90f);
+  height: 39px;
+  align-content: center;
+  align-items: center;
+  animation: border-animation 2s linear infinite;
+  animation-iteration-count: infinite;
 }
 
-.nav-item {
-  margin: 20px;
-  color: $primary;
+@keyframes border-animation {
+  0% {border: 1px dotted rgba(32, 203, 152, 0);}
+  1% {border: 1px dotted rgba(32, 203, 152, 0.3);}
+  5% {border: 1px dotted rgba(15, 236, 172, 0.9);}
+  6% {border: 1px dotted rgba(24, 229, 168, 0.8);}
+  7% {border: 1px dotted rgba(24, 224, 163, 0.7);}
+  8% {border: 1px dotted rgba(32, 203, 152, 0.6);}
+  9% {border: 1px dotted rgba(32, 203, 152, 0.5);}
+  10% {border: 1px dotted rgba(32, 203, 152, 0.3);}
+  11% {border: 1px dotted rgba(32, 203, 152, 0.4);}
+  12% {border: 1px dotted rgba(32, 203, 152, 0.5);}
+  13% {border: 1px dotted rgba(32, 203, 152, 0.6);}
+  14% {border: 1px dotted rgba(32, 203, 152, 0.8);}
+  15% {border: 1px dotted rgba(28, 236, 174, 0.9);}
+  75% {border: 1px dotted rgba(28, 236, 174, 0.2);}
 }
 
-.navbar-link {
-  text-decoration: none;
-
+.navbar-title {
+  margin: 10px;
+  color: #60e2b9;
 }
 
 .navbar-title-logo {
@@ -37,7 +50,26 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 50px;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.nav-item {
+  margin: 20px;
+  color: $primary;
+}
+
+.nav-item-s {
+  color: #60e2b9;
+  margin: 20px 10px 20px 8px;
+  font-size: calc(1rem + 0.4vw);
+}
+
+.navbar-link {
+  text-decoration: none;
+}
+
+.container-md {
+
 }
