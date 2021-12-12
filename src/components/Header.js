@@ -7,6 +7,7 @@ function Header(props) {
 
 
 	useEffect(() => {
+		console.log(window.location.pathname)
 		window.location.pathname === "/home" ? setCurrentPageTitle("waver~") : setCurrentPageTitle(window.location.pathname.replace("/", ""))
 		return () => console.log("Cleared")
 	}, [ window.location.pathname, currentPageTitle ])
