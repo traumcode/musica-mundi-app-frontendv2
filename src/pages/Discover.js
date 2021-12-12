@@ -51,15 +51,7 @@ function Discover(props) {
 
 	return (
 		<div className="discover-container">
-			<div className="discover-card-title">
-				<picture>
-					{/*<img src="https://images.pexels.com/photos/5569968/pexels-photo-5569968.jpeg" className="img-fluid" alt="..."/>*/}
-					{Object?.values(genres)?.map((genre) => {
-						return <img src={genre.utils.photo} className="img-fluid mw-16" alt="..."/>
-					})}
-				</picture>
-				<SearchBar/>
-			</div>
+
 			<div className="discover-content">
 
 			</div>

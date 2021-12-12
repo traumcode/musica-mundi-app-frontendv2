@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import Menu from "./Menu";
 
 function Header(props) {
 	const [ currentPageTitle, setCurrentPageTitle ] = useState("");
@@ -23,41 +22,24 @@ function Header(props) {
 	}
 
 	return (
-		<div className="main-header-container">
-			<div className="header-container">
-				<div className="header-menu">
-					<div className="logo-and-title">
-						<i className="bi bi-soundwave soundwave-logo"/>
-						<h1 className="header-title-h">{!currentPageTitle
-							? props.currentPageTitle
-							: currentPageTitle}</h1>
-					</div>
-					<div>
-						<h1 className="current-page-logo">{currentToLogo(currentPageTitle)}</h1>
-					</div>
-					<div className="header-menu-buttons">
-						<ul className="menu-buttons">
-							<Link className="menu-link" to="/home">
-								<li className="link link-effect">waver</li>
-							</Link>
-							<Link className="menu-link" to="/discover">
-								<li className="link link-effect">discover</li>
-							</Link>
-							<Link className="menu-link" to="/collections">
-								<li className="link link-effect">collections</li>
-							</Link>
-							<Link className="menu-link" to="/manifest">
-								<li className="link link-effect">manifest</li>
-							</Link>
-						</ul>
-					</div>
-				</div>
-				<Menu/>
-			</div>
-			<div className="header-title-container">
+		<nav className="navbar">
+			<h1 className="navbar-title">WAVER</h1>
+			<ul className="navbar-nav">
+				<Link className="navbar-link" to="/">
+					<li className="nav-item">Home</li>
+				</Link>
+				<Link className="navbar-link" to="/discover">
+					<li className="nav-item">Discover</li>
+				</Link>
+				<Link className="navbar-link" to="/collections">
+					<li className="nav-item">Collections</li>
+				</Link>
+				<Link className="navbar-link" to="/manifest">
+					<li className="nav-item">Manifest</li>
+				</Link>
 
-			</div>
-		</div>
+			</ul>
+		</nav>
 	);
 }
 

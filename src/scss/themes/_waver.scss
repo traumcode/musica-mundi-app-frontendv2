@@ -22,19 +22,10 @@ $enable-gradients: false;
 $spacer: 1.2rem;
 $border-width: 1px;
 $btn-border-radius: 0;
+
 @import "./node_modules/bootstrap/scss/bootstrap";
 
-// Add SASS theme customizations here..
-/*! `Custom` Bootstrap 5 theme */
-@import url(https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
-@import url(https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700);
-/*!
- * Bootstrap v5.0.1 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -74,9 +65,9 @@ $btn-border-radius: 0;
 
 body {
   margin: 0;
-  font-family: Raleway;
+  font-family: Raleway, serif;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -99,8 +90,8 @@ hr:not([size]) {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   margin-bottom: .6rem;
-  font-family: Montserrat;
-  font-weight: 500;
+  font-family: Montserrat, serif;
+  font-weight: 100;
   line-height: 1.2
 }
 
@@ -3204,7 +3195,7 @@ textarea.form-control-lg {
     flex-flow: row wrap
   }
   .card-group > .card {
-    flex: 1 0 0%;
+    flex: 1 0 0;
     margin-bottom: 0
   }
   .card-group > .card + .card {
@@ -3245,7 +3236,6 @@ textarea.form-control-lg {
   background-color: #fff;
   border: 0;
   border-radius: 0;
-  overflow-anchor: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease
 }
 
@@ -4421,11 +4411,10 @@ textarea.form-control-lg {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: Raleway;
+  font-family: Raleway, serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.5;
-  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -4535,11 +4524,10 @@ textarea.form-control-lg {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: Raleway;
+  font-family: Raleway, serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
