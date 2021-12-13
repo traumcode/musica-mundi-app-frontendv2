@@ -14,7 +14,6 @@ export function setMainStorage(Obj) {
 	window.dispatchEvent(new Event("storage"));
 }
 
-
 function App() {
 	const [ currentPageTitle ] = useState("WAVr~");
 

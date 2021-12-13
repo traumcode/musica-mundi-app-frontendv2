@@ -88,10 +88,12 @@ $btn-border-radius: 0;
 }
 
 .current-page-title {
-  color: #275859;
+  color: #012e1ab3;
   position: absolute;
-  font-family: 'Raleway', serif;
+  font-family: inherit;
   font-size: 150px;
+  font-weight: 100;
+  top: 250px;
 }
 
 .header-menu {

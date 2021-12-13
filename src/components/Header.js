@@ -26,32 +26,35 @@ function Header(props) {
 		<header>
 			<nav className="navbar">
 				<div className="navbar-title-logo">
-					<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="50" height="50"
-						  fill={primary_color}>
-						<use id="Background" href="#img1" x="0" y="0"/>
-						<path id="Shape 1" className="s0" style={{ fill: `${primary_color}` }} d="m246.05 787.03l2-120l138-409l15 65l-155 464z"/>
-						<path id="Shape 2" className="s0" style={{ fill: `${primary_color}` }} d="m265.05 729.03l-23 75l-51-401l29.63-42.86l44.37 368.86z"/>
-						<path id="Shape 3" className="s0" style={{ fill: `${primary_color}` }} d="m0 402.03l-7.95-41l229-1l-18 43l-203.05-1z"/>
-						<path id="Shape 4" className="s0" style={{ fill: `${primary_color}` }}
-								d="m363.81 321.21l22.2-66.4l117.67 505.54l-19.67 73l-120.21-512.14z"/>
-						<path id="Shape 5" className="s0" style={{ fill: `${primary_color}` }}
-								d="m484.21 839.21l-16.6-77.2l190.07-682.33l16 70.67l-189.47 688.86z"/>
-						<path id="Shape 6" className="s0" style={{ fill: `${primary_color}` }}
-								d="m638.51 150.26l19.5-72.5l136 548.75l-15.75 80.5l-139.75-556.75z"/>
-						<path id="Shape 7" className="s1" style={{
-							fill: `${primary_color}`,
-							stroke: "#60e2b9",
-							strokeWidth: '5'
-						}} d="m778.01 709.51l-18.5-79l55-268l29 28.25l-65.5 318.75z"/>
-						d="m500.5 992c-271.8 0-491.5-219.7-491.5-491.5c0-271.8 219.7-491.5 491.5-491.5c271.8 0 491.5 219.7 491.5 491.5c0 271.8-219.7
-						491.5-491.5 491.5z"/>
-						<path id="Shape 8" className="s0" d="m842.26 396.51l-28.25-34l186.25-0.25l-0.25 35l-157.75-0.75z"/>
+					<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+						  width="50" height="50" viewBox="0 0 512.000000 512.000000"
+						  preserveAspectRatio="xMidYMid meet">
+
+						<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+							fill="#30daa8" stroke="none">
+							<path d="M974 4306 c-17 -8 -43 -29 -57 -47 -13 -19 -142 -333 -285 -699
+l-260 -665 -135 -5 c-147 -5 -165 -12 -211 -74 -33 -43 -29 -132 6 -178 47
+-62 86 -70 304 -66 215 3 241 11 281 84 12 21 99 237 193 479 164 419 189 481
+190 462 1 -27 573 -2668 584 -2697 43 -110 198 -132 269 -39 15 21 143 362
+323 862 164 455 300 827 303 827 3 0 82 -143 175 -318 93 -174 180 -333 193
+-352 64 -99 209 -97 268 2 9 16 149 310 310 654 161 344 295 622 298 617 2 -4
+97 -305 211 -668 114 -363 215 -671 225 -685 64 -89 183 -94 253 -12 18 22 50
+119 122 373 54 189 102 359 108 377 l10 32 166 0 c141 0 173 3 208 19 61 28
+89 73 89 143 0 61 -17 94 -69 132 -26 20 -40 21 -300 21 l-273 0 -37 -28 c-45
+-35 -47 -39 -106 -247 l-47 -165 -51 160 c-28 88 -114 363 -192 610 -78 248
+-151 464 -163 482 -29 43 -70 65 -120 65 -53 0 -85 -13 -118 -46 -16 -16 -156
+-302 -345 -706 -176 -374 -321 -680 -324 -680 -3 0 -90 160 -195 355 -112 210
+-203 369 -222 387 -37 36 -112 49 -163 28 -67 -28 -73 -43 -350 -812 -146
+-406 -267 -738 -270 -738 -3 0 -133 595 -289 1323 -156 727 -290 1336 -297
+1354 -31 72 -137 112 -210 79z"/>
+						</g>
 					</svg>
+
 					<h1 className="navbar-title">{currentPageTitle}</h1>
 				</div>
 
 				{user === "" ? (
-					<ul className="navbar-nav-up" >
+					<ul className="navbar-nav-up">
 						<Link className="navbar-link" to="/collections">
 							<li className="nav-item">sign in</li>
 						</Link>
@@ -59,7 +62,7 @@ function Header(props) {
 							<li className="nav-item">about us</li>
 						</Link>
 					</ul>) : (
-					<ul className="navbar-nav-up" >
+					<ul className="navbar-nav-up">
 						<Link className="navbar-link" to={`/${user}/profile/`}>
 							<li className="nav-item-s"><i className="bi bi-person-circle"/></li>
 						</Link>

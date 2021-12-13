@@ -31,7 +31,8 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +54,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.3.0",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "8.1.0",
     "immer": "^9.0.7",
     "json-schema": "^0.4.0",
     "ansi-regex": "^6.0.1",
