@@ -1,18 +1,21 @@
-const morgan = require('morgan');
-const express = require('express');
+import express from 'express';
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+
+import postRoutes from './routes/post.js';
+
 const app = express();
 
-const port = 8080;
+app.use('/posts', postRoutes);
 
-//ROUTES
-const { getPosts } = require('./routes/post');
+app.use(bodyParser.json({limit: "30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+app.use(cors())
 
-//MIDDLEWARE
+const CONNECTION_URL = 'mongodb+srv://traumcode:Gogusclipiici89@cluster0.yjfha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const PORT = process.env.PORT || 5000;
 
-app.use(morgan('dev'));
-
-app.get("/", getPosts);
-
-app.listen(port, () => {
-	console.log("The server works just fine")
-});
+mongoose.connect(CONNECTION_URL)
+	.then(() => app.listen(PORT, () => console.log('Server is running gooood')))
+	.catch(( error ) => console.log(error.message))

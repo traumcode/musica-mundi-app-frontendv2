@@ -1,3 +1,5 @@
-exports.getPosts = (req,res) => {
-	res.send("Hello again from the controllers")
-};
+ export const getPosts = (req, res) => {
+	res.send('This Route works too');
+ }
+
+ export const createPost = (re)
