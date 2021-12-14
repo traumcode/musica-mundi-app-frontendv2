@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import Discover from "../pages/Discover";
 import './App.scss'
 import LoginPage from "../pages/LoginPage";
+import NotFound from "../pages/NotFound";
+
 
 
 export function setMainStorage(Obj) {
@@ -16,7 +18,7 @@ export function setMainStorage(Obj) {
 
 function App() {
 	const [ currentPageTitle ] = useState("WAVr~");
-
+	require('dotenv').config();
 	useEffect(() => {
 		window.addEventListener("storage", () => {
 			let mainStorage = JSON.parse(window.localStorage.getItem("MainStorage") || "{}");
@@ -33,12 +35,13 @@ function App() {
 	return (
 		<Router>
 			<Switch>
-				<Route exact path="/signin"><LoginPage/></Route>
+				<Route path="/signin" exact component={LoginPage}/>
 				<Layout currentPageTitle={currentPageTitle}>
-					<Route path="/home"><Home/></Route>
-					<Route path="/discover"><Discover/></Route>
+					<Route path={["/home", "/"]} exact component={Home}/>
+					<Route path="/discover" exact component={Discover}/>
 				</Layout>
 			</Switch>
+			<Route component={NotFound}/>
 		</Router>
 	);
 }

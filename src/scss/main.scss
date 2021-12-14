@@ -3,13 +3,16 @@
 'themes/waver';
 
 @import
+'layout/grid',
 'layout/header',
 'layout/layout';
 
 @import
 'pages/discovery',
-'pages/signin';
+'pages/signin',
+'pages/404';
 
 @import
-'components/loadingSpinner';
+'components/loadingSpinner',
+'components/card';
 

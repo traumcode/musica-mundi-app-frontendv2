@@ -79,7 +79,14 @@ l-260 -665 -135 -5 c-147 -5 -165 -12 -211 -74 -33 -43 -29 -132 6 -178 47
 				)}
 			</nav>
 			<div className="container-md">
-				<h1 className="current-page-title">WAVER</h1>
+				<div className="title-container">
+					<div className="title-effect1">
+						<h1 className="current-page-title">WAVER</h1>
+					</div>
+					<div className="title-effect2">
+						<h1 className="current-page-title2">WAVER</h1>
+					</div>
+				</div>
 				<ul className="header-menu navbar-nav">
 					<Link className="header-link nav-item-s" to="/home">
 						<li>home</li>

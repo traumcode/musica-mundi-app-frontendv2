@@ -11,7 +11,7 @@ function Discover(props) {
 	const styleParam = params.get('style');
 	const genreParam = params.get('genre');
 
-	const [ artist, setArtist ] = useState([]);
+	const [ artists, setArtist ] = useState([]);
 	const [ searchArtist, setSearchArtist ] = useState(artistParam || "");
 	const [ searchGenre, setSearchGenre ] = useState(genreParam || "");
 	const [ searchStyle, setSearchStyle ] = useState(styleParam || "");
@@ -43,26 +43,51 @@ function Discover(props) {
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
-
-			/* TAKE OUT THE TIMER */
-
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 5000);
+			setIsLoading(false);
 		});
+		return () => console.log("clear")
 	}, [ searchGenre, searchArtist, searchStyle, currentPage, history ]);
 
 	return (
 		<div className="discover-content">
 			<h1>DISCOVER PAGE</h1>
+			<div className="discover-genres">
+				{Object?.values(genres).map((genre, index) => {
+					return (
+						<div className="genre-item" key={index}>
+							<img src={genre.utils.photo} alt='' className="genre-photo"/>
+							<div className="genre-overlay">
+							</div>
+						</div>
+					)
+				})}
+
+			</div>
 			{isLoading ? (
 				<div className="loading-spinner">
 					<BarLoader
-						color={"#F05D5E"} loading={isLoading} height={3} width={600}/>
+						color={"#27282a"} loading={isLoading} height={3} width={600}/>
 				</div>
 			) : (
-				<div>
-					<h1>Finished loading</h1>
+				<div className="discover-results">
+					<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3">
+						{artists?.map((artist, index) => {
+							return (
+								<div key={index} className="col">
+									<div className="card">
+										<a href="" className="card-profile">
+											<img src={`${artist.cover_image}`} alt=""/>
+										</a>
+										<div className="card-body">
+											<h5 className="">{artist.type}</h5>
+											<h2 className="card-text">{artist.title}</h2>
+										</div>
+										<i className="bi bi-caret-right card-icon"/>"
+									</div>
+								</div>
+							)
+						},)}
+					</div>
 				</div>
 			)}
 		</div>

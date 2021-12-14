@@ -13,7 +13,7 @@ $btn-border-radius: 0;
 
 .navbar {
   height: 60px;
-  background: $secondary;
+  background: #191919;
   align-content: center;
 }
 
@@ -73,14 +73,13 @@ $btn-border-radius: 0;
 }
 
 .container-md {
-  background: #41ffb4ab url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat;
   height: 593px;
   width: 100%;
   top: 60px;
-  background-position: bottom;
+  background: #46de9ac4 url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat center;
   display: flex;
   background-size: cover;
-  /* box-shadow: 13px 15px 17px 2px #7db3b270; */
+  box-shadow: 0 10px 11px 0 #ffffff70;
   position: absolute;
   background-blend-mode: darken;
   align-items: center;
@@ -88,12 +87,22 @@ $btn-border-radius: 0;
 }
 
 .current-page-title {
-  color: #012e1ab3;
-  position: absolute;
+  color: #6effc0;
+  position: relative;
   font-family: inherit;
   font-size: 150px;
   font-weight: 100;
-  top: 250px;
+  top: 1px;
+}
+
+.current-page-title2 {
+  color: #567a75;
+  position: relative;
+  font-family: inherit;
+  font-size: 150px;
+  font-weight: 100;
+  top: 0px;
+  right: 282px;
 }
 
 .header-menu {
@@ -105,4 +114,28 @@ $btn-border-radius: 0;
   color: #00877b;
   font-size: 30px;
   font-weight: 200;
+}
+
+.title-effect1 {
+  border: 1px solid #66e1ab;
+  border-right: none;
+  height: 192px;
+  background-color: #bbffed1a;
+  position: relative;
+  overflow: hidden;
+  width: 283px;
+  left: -140px;
+  top: 110px;
+}
+
+.title-effect2{
+  border: 1px solid #71c2a2;
+  border-left: none;
+  height: 192px;
+  background: #6ca29c47;
+  position: relative;
+  overflow: hidden;
+  width: 283px;
+  left: 142px;
+  top: -82px;
 }
