@@ -6,7 +6,8 @@ function LoginPage(props) {
 			<div className="row">
 				<div className="col-md-6">
 					<div className="card login-card">
-						<h1 className="login-title">waver~</h1>
+						<h1 className="login-title"><i className="fab fa-napster"/></h1>
+						<h2 className="login-message">welcome surfer</h2>
 						<form onSubmit={(e) => e.preventDefault()} className="box">
 							<h1>log in</h1>
 							<p className="text-muted">please enter your login and password</p>
