@@ -56,7 +56,7 @@ function Discover(props) {
 	return (
 		<div className="discover-content">
 			<h1>surf the waves ~</h1>
-			<Waves/>
+			<Waves loading={isLoading}/>
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
