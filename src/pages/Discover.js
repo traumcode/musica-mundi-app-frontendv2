@@ -43,33 +43,37 @@ function Discover(props) {
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
-			setIsLoading(false);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 2000)
 		});
 		return () => console.log("clear")
 	}, [ searchGenre, searchArtist, searchStyle, currentPage, history ]);
 
 	return (
 		<div className="discover-content">
-			<h1>DISCOVER PAGE</h1>
+			<h1>surf the waves ~</h1>
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
 						<div className="genre-item" key={index}>
 							<img src={genre.utils.photo} alt='' className="genre-photo"/>
 							<div className="genre-overlay">
+								<div className="overlay-text">{genre.utils.genre.replace("+", "")}</div>
 							</div>
 						</div>
 					)
 				})}
 
 			</div>
+			<div className="discover-results" style={isLoading ? {height: "100vh"} : {height: "100%"}}>
 			{isLoading ? (
 				<div className="loading-spinner">
 					<BarLoader
-						color={"#27282a"} loading={isLoading} height={3} width={600}/>
+						color={"#30daa8"} loading={isLoading} height={3} width={600}/>
 				</div>
 			) : (
-				<div className="discover-results">
+
 					<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3">
 						{artists?.map((artist, index) => {
 							return (
@@ -81,15 +85,15 @@ function Discover(props) {
 										<div className="card-body">
 											<h5 className="">{artist.type}</h5>
 											<h2 className="card-text">{artist.title}</h2>
+											<i className="bi bi-caret-right card-icon"/>"
 										</div>
-										<i className="bi bi-caret-right card-icon"/>"
 									</div>
 								</div>
 							)
 						},)}
-					</div>
 				</div>
 			)}
+		</div>
 		</div>
 	);
 }

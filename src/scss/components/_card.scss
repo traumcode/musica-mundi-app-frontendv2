@@ -1,10 +1,11 @@
 .card {
   margin-bottom: 20px;
-  border: 1px solid #8bffd97d;
+  border: 1px solid rgba(111, 227, 193, 0.42);
   min-width: 300px;
   max-width: 300px;
   height: 423px;
-  box-shadow: 4px 3px 10px #8888885c;
+  border-radius: 0;
+  /* box-shadow: 4px 3px 10px #8888885c; */
   transition: all 0.3s ease-in-out;
   background-color: transparent;
   &:hover {
@@ -29,6 +30,7 @@
   flex-wrap: wrap;
   align-content: flex-start;
   flex-direction: column;
+  background: #3cf7c0;
 }
 
 .card-icon {

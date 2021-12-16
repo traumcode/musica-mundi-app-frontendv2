@@ -89,16 +89,22 @@ l-260 -665 -135 -5 c-147 -5 -165 -12 -211 -74 -33 -43 -29 -132 6 -178 47
 				</div>
 				<ul className="header-menu navbar-nav">
 					<Link className="header-link nav-item-s" to="/home">
-						<li>home</li>
+						<li><button className="offset" style={{border: "1px solid #3dffc6f5"}}>home</button></li>
 					</Link>
 					<Link className="header-link nav-item-s " to="/discover">
-						<li>discover</li>
+						<li><button className="slide">discover</button></li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/collections">
-						<li>collections</li>
+						<li><button className="close">collections</button></li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/manifest">
-						<li>manifest</li>
+						<li><button className="slide">manifest</button></li>
+					</Link>
+					<Link className="header-link nav-item-s" to="/magazine">
+						<li><button className="close">magazine</button></li>
+					</Link>
+					<Link className="header-link nav-item-s" to="/magazine">
+						<li><button className="fill">magazine</button></li>
 					</Link>
 				</ul>
 			</div>
