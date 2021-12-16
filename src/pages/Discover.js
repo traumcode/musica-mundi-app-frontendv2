@@ -46,9 +46,7 @@ function Discover(props) {
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 2000)
+			setIsLoading(false);
 		});
 		return () => console.log("clear")
 	}, [ searchGenre, searchArtist, searchStyle, currentPage, history, searchStyles ]);
@@ -56,7 +54,6 @@ function Discover(props) {
 	return (
 		<div className="discover-content">
 			<h1>surf the waves ~</h1>
-			<Waves loading={isLoading}/>
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
@@ -119,7 +116,14 @@ function Discover(props) {
 								<div key={index} className="col">
 									<Link to={`/artist/${artist.title}`} style={{color: '#258a6a', textDecoration: 'none'}}>
 										<div className="card">
-											<Link to={`/artist/${artist.title}`} className="card-profile">
+											<Link to={{
+												pathname: `/artist/${artist.title}`,
+												state: {
+													artist:artist,
+													from: "discover",
+													page: currentPage,
+												},
+											}} className="card-profile">
 												<img src={`${artist.cover_image}`} alt=""/>
 											</Link>
 											<div className="card-body">

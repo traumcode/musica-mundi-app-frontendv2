@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import { Pulse } from "./svgs/svgs";
+import { Pulse, Pulse2 } from "./svgs/svgs";
 
 function Header(props) {
 	const [ currentPageTitle, setCurrentPageTitle ] = useState("");
@@ -8,7 +8,6 @@ function Header(props) {
 
 
 	useEffect(() => {
-		console.log(window.location.pathname)
 		window.location.pathname === "/home" ? setCurrentPageTitle("waver~") : setCurrentPageTitle(window.location.pathname.replace("/", ""))
 		return () => console.log("Cleared")
 	}, [ window.location.pathname, currentPageTitle ])
@@ -29,7 +28,6 @@ function Header(props) {
 					<Pulse/>
 					<h1 className="navbar-title">{currentPageTitle}</h1>
 				</div>
-
 				{user === "" ? (
 					<ul className="navbar-nav-up">
 						<Link className="navbar-link" to="/collections">
@@ -63,6 +61,7 @@ function Header(props) {
 					<div className="title-effect2">
 						<h1 className="current-page-title2">WAVER</h1>
 					</div>
+					{/*<Pulse2/>*/}
 				</div>
 				<ul className="header-menu navbar-nav">
 					<Link className="header-link nav-item-s" to="/home">
@@ -85,6 +84,7 @@ function Header(props) {
 					</Link>
 				</ul>
 			</div>
+			<div className="red-bar"/>
 		</header>
 	);
 }
