@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const getSearchDetailsAPI = async (artist, genre, style, page) => {
-	const URL = `https://api.discogs.com/database/search?q=${artist}&genre=${genre}&style=${style}&per_page=30&page=${page}&key=VqZUFKLkvLwyMDTEGzsX&secret=hHOemXQZWexijknYxiBSWrUpWVzzujfY&secret=hHOemXQZWexijknYxiBSWrUpWVzzujfY`;
+	const URL = `https://api.discogs.com/database/search?q=${artist}&genre=${genre}&style=${style}&per_page=20&page=${page}&key=VqZUFKLkvLwyMDTEGzsX&secret=hHOemXQZWexijknYxiBSWrUpWVzzujfY&secret=hHOemXQZWexijknYxiBSWrUpWVzzujfY`;
 
 	try {
 		const { data } = await axios.get(URL);

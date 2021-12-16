@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { genresAPI, getSearchDetailsAPI } from "../apis/fetchData";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 import SearchBar from "../components/SearchBar";
+import color from "color";
+import { Waves } from "../components/svgs/svgs";
 
 
 function Discover(props) {
@@ -49,11 +51,12 @@ function Discover(props) {
 			}, 2000)
 		});
 		return () => console.log("clear")
-	}, [searchGenre, searchArtist, searchStyle, currentPage, history, searchStyles]);
+	}, [ searchGenre, searchArtist, searchStyle, currentPage, history, searchStyles ]);
 
 	return (
 		<div className="discover-content">
 			<h1>surf the waves ~</h1>
+			<Waves/>
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
@@ -96,47 +99,42 @@ function Discover(props) {
 									setCurrentPage(1);
 									setSearchStyles("");
 									setSearchStyle("");
-								}}
-							>
-								x
+								}}> x
 							</button>
 						</div>
-					) : (
-						""
-					)}
-
-					<p className="line-title">waves</p>
-				</div>
-				<SearchBar placeholder="enter a name of artist or album" handleSearch={handleKeyPress} />
+					) : ("")}
+					<p className="line-title">waves</p></div>
+				<SearchBar placeholder="enter a name of artist or album" handleSearch={handleKeyPress}/>
 			</div>
-			<div className="discover-results" style={isLoading ? {height: "100vh"} : {height: "100%"}}>
-			{isLoading ? (
-				<div className="loading-spinner">
-					<BarLoader
-						color={"#30daa8"} loading={isLoading} height={3} width={600}/>
-				</div>
-			) : (
-
+			<div className="discover-results" style={isLoading ? { height: "100vh" } : { height: "100%" }}>
+				{isLoading ? (
+					<div className="loading-spinner">
+						<BarLoader
+							color={"#30daa8"} loading={isLoading} height={3} width={600}/>
+					</div>
+				) : (
 					<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3">
 						{artists?.map((artist, index) => {
 							return (
 								<div key={index} className="col">
-									<div className="card">
-										<a href="" className="card-profile">
-											<img src={`${artist.cover_image}`} alt=""/>
-										</a>
-										<div className="card-body">
-											<h5 className="">{artist.type}</h5>
-											<h2 className="card-text">{artist.title}</h2>
-											<i className="bi bi-caret-right card-icon"/>"
+									<Link to={`/artist/${artist.title}`} style={{color: '#258a6a', textDecoration: 'none'}}>
+										<div className="card">
+											<Link to={`/artist/${artist.title}`} className="card-profile">
+												<img src={`${artist.cover_image}`} alt=""/>
+											</Link>
+											<div className="card-body">
+												<h5 className="" >{artist.type}</h5>
+												<h2 className="card-text">{artist.title}</h2>
+												<i className="bi bi-caret-right card-icon"/>"
+											</div>
 										</div>
-									</div>
+									</Link>
 								</div>
 							)
 						},)}
-				</div>
-			)}
-		</div>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }
