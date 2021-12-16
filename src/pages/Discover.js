@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { genresAPI, getSearchDetailsAPI } from "../apis/fetchData";
 import { useHistory } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
+import SearchBar from "../components/SearchBar";
 
 
 function Discover(props) {
@@ -48,7 +49,7 @@ function Discover(props) {
 			}, 2000)
 		});
 		return () => console.log("clear")
-	}, [ searchGenre, searchArtist, searchStyle, currentPage, history ]);
+	}, [searchGenre, searchArtist, searchStyle, currentPage, history, searchStyles]);
 
 	return (
 		<div className="discover-content">
@@ -56,7 +57,10 @@ function Discover(props) {
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
-						<div className="genre-item" key={index}>
+						<div className="genre-item" key={index} onClick={() => {
+							setSearchGenre(genre.utils.genre);
+							setSearchStyles(genre.styles);
+						}}>
 							<img src={genre.utils.photo} alt='' className="genre-photo"/>
 							<div className="genre-overlay">
 								<div className="overlay-text">{genre.utils.genre.replace("+", "")}</div>
@@ -64,7 +68,46 @@ function Discover(props) {
 						</div>
 					)
 				})}
+			</div>
+			<div className="styles-container">
+				{searchStyles
+					? Object.keys(searchStyles)?.map((style) => {
+						return (
+							<div key={style} className="styles-box" style={{ margin: "0" }}>
+								<div onClick={() => setSearchStyle(style)} className="styles-button styles-button-three">
+									<span>{style}</span>
+								</div>
+							</div>
+						);
+					})
+					: ""}
+			</div>
+			<div className="title-search-artist">
+				<div className="title">
+					<p className="line-title">surf </p>
+					<p className="line-title">some </p>
+					{searchGenre ? (
+						<div className="title-two">
+							<p className="text-genre">{searchGenre.replace("+", " ")}</p>
+							<button
+								className="cancel-genre"
+								onClick={() => {
+									setSearchGenre("");
+									setCurrentPage(1);
+									setSearchStyles("");
+									setSearchStyle("");
+								}}
+							>
+								x
+							</button>
+						</div>
+					) : (
+						""
+					)}
 
+					<p className="line-title">waves</p>
+				</div>
+				<SearchBar placeholder="enter a name of artist or album" handleSearch={handleKeyPress} />
 			</div>
 			<div className="discover-results" style={isLoading ? {height: "100vh"} : {height: "100%"}}>
 			{isLoading ? (

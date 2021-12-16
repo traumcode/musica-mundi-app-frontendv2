@@ -35,111 +35,22 @@
   justify-content: space-around;
   align-items: center;
   gap: 5px;
-  margin-top: 50px;
+  background: #20393f;
+  margin-top: -92px;
+  border: 6px solid #20393e;
 }
 
 .genre-item {
   position: relative;
   width: 100%;
+  border: 1px solid #217e63;
 }
 
-.genre-photo{
+.genre-photo {
   width: 100%;
   height: auto;
   display: block;
 }
-
-.discover-results {
-  padding: 50px;
-}
-
-.card-artist {
-  background-color: transparent;
-}
-
-.searchBox1 {
-  margin-top: 242px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 10%;
-  top:40%;
-}
-
-.searchInput1 {
-  padding: 10px;
-  width: 80px;
-  height: 80px;
-  background: none;
-  border: 1px solid #f5deb3;
-  border-radius: 50px;
-  box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
-  font-size: 26px;
-  color: #d7cec8;
-  outline: none;
-  transition: 0.7s;
-}
-
-.searchBox1:hover input {
-  width: 450px;
-  height: 70px;
-  background: white;
-  border-radius: 0;
-  border: 1px solid #00dffc;
-  color:black
-}
-
-.search-bar {
-  position: absolute;
-  font-size: 26px;
-  color: #00dffc;
-  transition: .2s;
-}
-
-.searchBox1:hover .search-bar {
-  opacity: 0;
-  z-index: -1;
-}
-
-/*  BUILT-IN STYLES FOR PLACEHOLDER */
-
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: transparent;
-}
-
-::-moz-placeholder { /* Firefox 19+ */
-  color: transparent;
-}
-
-:-ms-input-placeholder { /* IE 10+ */
-  color: transparent;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  color: transparent;
-}
-
-:hover::-webkit-input-placeholder {
-  color: #B0A18F;
-  transition: .9s;
-}
-
-:hover::-moz-placeholder { /* Firefox 19+ */
-  color: #B0A18F;
-  transition: .9s;
-}
-
-:hover:-ms-input-placeholder { /* IE 10+ */
-  color: #B0A18F;
-  transition: .9s;
-}
-
-:hover:-moz-placeholder { /* Firefox 18- */
-  color: #B0A18F;
-  transition: .9s;}
 
 .genre-overlay {
   position: absolute;
@@ -150,7 +61,7 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.9s cubic-bezier(0, 0.31, 0, 1.79);
+  transition: 0.9s cubic-bezier(0.18, 0.15, 0, 1.7);
   background-color: #3cf7c0;
   cursor: pointer;
   &:hover {
@@ -168,3 +79,144 @@
   text-align: center;
 }
 
+
+.discover-results {
+  padding: 50px;
+}
+
+.card-artist {
+  background-color: transparent;
+}
+
+.styles-box {
+  height: 33.33%;
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.styles-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.styles-box {
+  background-color: #000b0e;
+  height: 51px;
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.styles-button {
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.styles-button-three {
+  color: #3cf7c0;
+  transition: all 0.5s;
+  position: relative;
+}
+
+.styles-button-three::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.styles-button-three:hover::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+
+.styles-button-three::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid #58ffcf;
+  transform: scale(1.2, 1.2);
+}
+
+.styles-button-three:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.title-search-artist {
+  margin: 30px 15vw 60px 15vw;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  font-family: Raleway, sans-serif;
+  font-weight:100;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 10px;
+  margin-bottom:40px;
+}
+
+.title-two {
+  text-align: center;
+  font-family: Raleway, sans-serif;
+  font-weight: 100;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 10px;
+}
+
+.line-title {
+  margin: 0;
+}
+
+.text-genre {
+  color: #0dce95;
+  margin: 0;
+}
+
+.cancel-genre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0dce95;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px grey dotted;
+  font-size:20px;
+  background-color: #ffffff36;
+  &:hover {
+    color: red;
+  }
+&:active {
+  color: black;
+}
+}
