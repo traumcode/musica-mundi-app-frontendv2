@@ -165,21 +165,27 @@
 }
 
 .title-search-artist {
-  margin: 30px 15vw 36px 17.6vw;
+  margin: 15px 25vw 0 21.6vw;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+
 }
 
 .title {
   text-align: center;
   font-family: Raleway, sans-serif;
-  font-weight:100;
+  font-weight: 100;
   font-size: 40px;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  grid-gap: 10px;
   gap: 10px;
-  margin-bottom:40px;
+  margin-bottom: 0;
 }
 
 .title-two {
@@ -195,11 +201,12 @@
 
 .line-title {
   margin: 0;
-  color:#3dffc6;
+  color: #16403c;
+  font-weight: 100;
 }
 
 .text-genre {
-  color: #0dce95;
+  color: #3dffc6;
   margin: 0;
 }
 
@@ -207,7 +214,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #0dce95;
+  color: #3dffc6;
   margin: 0;
   height: 20px;
   width: 20px;
@@ -215,7 +222,7 @@
   font-size:20px;
   background-color: #ffffff36;
   &:hover {
-    color: red;
+    color: #ff3838;
   }
 &:active {
   color: black;
