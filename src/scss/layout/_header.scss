@@ -78,13 +78,12 @@ $btn-border-radius: 0;
   height: 400px;
   width: 100%;
   top: 60px;
-  //background: #85b0a2 url(https://i.ibb.co/PtqQh5R/1246356.jpg) no-repeat top; // top
-  background: #2dffc5 url(https://i.ibb.co/PtqQh5R/1246356.jpg) no-repeat center;
+  background: #00553d url(https://i.ibb.co/PtqQh5R/1246356.jpg) no-repeat center;
   display: flex;
   background-size: cover;
   box-shadow: -1px 3px 6px 0px #424242;
   position: absolute;
-  background-blend-mode: hard-light;
+  background-blend-mode: exclusion;
   align-items: center;
   justify-content: space-around;
 }

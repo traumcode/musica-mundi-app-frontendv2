@@ -29,7 +29,6 @@ export function getRelatedArtist(artistId) {
 
 				return spotifyApi.getArtistRelatedArtists(`${artistId}`)
 					.then(function (data) {
-						console.log(data.body);
 						resolve(data.body)
 
 					}, function (error) {
@@ -68,7 +67,6 @@ export function getNewestReleases() {
 						country: 'RO'
 					})
 					.then(function (data) {
-						console.log(data.body);
 						resolve(data.body)
 					}, function (err) {
 						console.log("Something went wrong!", err);
@@ -102,7 +100,6 @@ export function getSearchDetails(text) {
 
 				return spotifyApi.searchArtists(`${text}`)
 					.then(function (data) {
-						console.log(data.body);
 						resolve(data.body)
 					}, function (err) {
 						console.log("Something went wrong!", err);
@@ -134,9 +131,8 @@ export function getArtistTopTracks(artistId) {
 				const token = body.access_token;
 				spotifyApi.setAccessToken(token);
 
-				return spotifyApi.getArtistTopTracks(`${artistId}`, "GB")
+				return spotifyApi.getArtistTopTracks(`${artistId}`, "US")
 					.then(function (data) {
-						console.log(data.body);
 						resolve(data.body)
 					}, function (err) {
 						console.log("Something went wrong!", err);
