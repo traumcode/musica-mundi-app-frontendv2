@@ -48,17 +48,29 @@ function ArtistDetails(props) {
 		setData(props, currentPage).then(r => console.log(r));
 	}, [ props, currentPage ]);
 
-
 	return (
+		// <div className="artist-details-content">
+		// 	<div className="artist-photo-and-info">
+		// 		<div className="artist-photo">
+		// 			<img  className="photo" src={props.location.state.artist.cover_image} alt=""/>
+		// 			<img  src={props.location.state.artist.cover_image} alt=""/>
+		// 		</div>
+		// 		<div className="artist-info"/>
+		// 	</div>
+		// </div>
 		<div className="artist-details-content">
-			<div className="artist-photo-and-info">
-				<div className="artist-photo">
-					<img  className="photo" src={props.location.state.artist.cover_image} alt=""/>
-					<img  src={props.location.state.artist.cover_image} alt=""/>
+			<div className='artist-details-info'>
+				<h1>~ </h1>
+				<img className='artist-details-photo' src={props.location.state.artist.cover_image} alt=""/>
+				<h5 className='info-title'>info:</h5>
+				<div style={{textAlign: 'initial'}}>
+					<p className='artist-details-info-text'>{artistDetails.profile}</p>
 				</div>
-				<div className="artist-info"/>
 			</div>
+			<div className='artist-details-releases'>
+				<h1>RELEASES</h1>
 
+			</div>
 		</div>
 	);
 }
