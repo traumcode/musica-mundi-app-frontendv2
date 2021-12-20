@@ -67,8 +67,8 @@ function ArtistDetails(props) {
 					<div style={{ textAlign: 'initial' }}>
 						{artistDetails?.urls?.map(function (link, index) {
 							return (
-								<Link to='https://mujux.com'>
-									<p key={index} className='artist-details-info-text'>{link}</p>
+								<Link key={index} to='https://mujux.com'>
+									<p className='artist-details-info-text'>{link}</p>
 								</Link>
 							)
 						})}
@@ -79,7 +79,7 @@ function ArtistDetails(props) {
 						<p className='artist-details-info-text'>
 							{artistDetails?.members?.map(function (member, index) {
 								return (
-									<Link to={member.resource_url} style={{ textDecoration: 'none' }}>{member.name}, </Link>
+									<Link key={index} to={member.resource_url} style={{ textDecoration: 'none' }}>{member.name}, </Link>
 								)
 							})}
 						</p>
