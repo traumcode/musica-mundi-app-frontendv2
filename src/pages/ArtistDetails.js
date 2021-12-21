@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArtistDetails, getArtistReleases } from "../apis/fetchData";
 import { getArtistTopTracks, getRelatedArtist, getSearchDetails } from "../apis/fetchDataSpotify";
+import SkewLoader from "react-spinners/SkewLoader";
+import SwiperCarousel from "../components/Swiper";
 
 
 function ArtistDetails(props) {
@@ -11,6 +13,7 @@ function ArtistDetails(props) {
 	const [ topTracks, setTopTracks ] = useState([]);
 	const [ artistDetails, setArtistDetails ] = useState([]);
 	const [ currentPage, setCurrentPage ] = useState(1);
+	const [ releaseLoading, setReleaseLoading ] = useState(true);
 	const [ isLoading, setIsLoading ] = useState(true);
 	const [ pagesNumber, setPagesNumber ] = useState();
 
@@ -20,8 +23,12 @@ function ArtistDetails(props) {
 
 	const setData = async (props, currentPage) => {
 		setIsLoading(true);
+		setReleaseLoading(true);
+
 		let data = await getArtistReleases(props.location?.state?.artist.id, currentPage);
 		setArtistReleases(data?.releases);
+		setReleaseLoading(false);
+
 
 		const data2 = await getArtistDetails(props.location.state?.artist.id);
 		setArtistDetails(data2);
@@ -88,6 +95,11 @@ function ArtistDetails(props) {
 			</div>
 			<div className='artist-details-releases'>
 				<h1>▲</h1>
+				<h1>related artists</h1>
+				<SwiperCarousel relatedArtists={relatedArtists}/>
+				{isLoading ? (<div><SkewLoader
+					color={"#3dffc6f5"} loading={isLoading} size={30}/></div>) : ("")}
+				<h1 style={{marginTop: '530px'}}>releases</h1>
 			</div>
 		</div>
 	);

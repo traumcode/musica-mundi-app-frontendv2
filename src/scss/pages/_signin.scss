@@ -4,7 +4,7 @@ $success:#015668;
 $danger2:#e12b45e3;
 $danger:#FF304F;
 $info:#0F81C7;
-$warning: #0de0e8;
+$warning: #23e7b4;
 $light:#e8e8e8;
 $dark:#000000;
 
@@ -19,7 +19,7 @@ $dark:#000000;
 .login-card {
   margin-bottom: 0;
   background: linear-gradient(to right, #ff304f00, #20c99759);
-  border: 1px solid #0de0e8;
+  border: 1px solid #17cfa0;
 }
 
 .login-title {
@@ -46,36 +46,15 @@ h2 {
 }
 
 .login-container {
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
-  //justify-content: center;
-  //background: #41ffb4ab url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat;
-  //height: 100vh;
-  //background-blend-mode: darken;
-  //background-size: 4000px;
-  //background-position: center;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #46de9ac4 url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat;
+  background: #092e24 url(https://i.ibb.co/PtqQh5R/1246356.jpg) no-repeat center;
   height: 100vh;
-  background-blend-mode: darken;
-  background-size: 3389px;
+  background-blend-mode: exclusion;
+  background-size: cover;
   background-position: center;
-
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
-  //justify-content: center;
-  //background: #208389b3 url(https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg) no-repeat;
-  //height: 100vh;
-  //background-blend-mode: darken;
-  //background-blend-mode: hard-light;
-  //background-size: 4000px;
-  //background-position: center;
 }
 
 .box {
@@ -92,7 +71,7 @@ h2 {
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid $warning;
+  border: 2px solid #17cfa0;
   padding: 10px 10px;
   width: 250px;
   outline: none;
@@ -120,12 +99,12 @@ h2 {
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid $warning;
+  border: 2px solid #17cfa0;
   padding: 14px 40px;
   outline: none;
   color: white;
   transition: 0.6s;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .box input[type="submit"]:hover {
@@ -203,4 +182,8 @@ a.socialIcon:hover,
 .social-circle i {
   color: #fff;
   transition: all 0.8s;
+}
+
+.fa-napster {
+  color: #123d34;
 }

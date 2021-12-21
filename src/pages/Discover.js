@@ -113,20 +113,10 @@ function Discover(props) {
 			<div className="discover-results" style={isLoading ? { height: "100vh" } : { height: "100%" }}>
 				{isLoading ? (
 					<div className="loading-spinner">
-						{/*<BarLoader*/}
-						{/*	color={"#30daa8"} loading={isLoading} height={3} width={600}/>*/}
 						<ScaleLoader
 							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} />
 						<ScaleLoader
 							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} css={overrideLoadingBar}/>
-
-
-						{/*<ScaleLoader*/}
-						{/*	color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1}/>*/}
-						{/*<ScaleLoader*/}
-						{/*	color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} />*/}
-						{/*<ScaleLoader*/}
-						{/*	color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} css={overrideLoadingBar}  />*/}
 					</div>
 				) : (
 					<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3">
