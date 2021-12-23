@@ -141,7 +141,6 @@ function Discover(props) {
 											<div className="card-body">
 												<h5 className="">{artist.type}</h5>
 												<h2 className="card-text">{artist.title}</h2>
-												<i className="bi bi-caret-right card-icon"/>"
 											</div>
 										</div>
 									</Link>
