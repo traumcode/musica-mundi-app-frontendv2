@@ -7,6 +7,7 @@ import './App.scss'
 import LoginPage from "../pages/LoginPage";
 import NotFound from "../pages/NotFound";
 import ArtistDetails from "../pages/ArtistDetails";
+import RegisterPage from "../pages/RegisterPage";
 
 
 export function setMainStorage(Obj) {
@@ -35,7 +36,8 @@ function App() {
 	return (
 		<Router>
 			<Switch>
-				<Route exact path="/signin" component={LoginPage}/>
+				<Route exact path="/login" component={LoginPage}/>
+				<Route exact path="/register" component={RegisterPage}/>
 				<Layout currentPageTitle={currentPageTitle}>
 					<Switch>
 						<Route exact path={[ "/home", "/" ]} component={Home}/>
