@@ -20,11 +20,11 @@ export default function SwiperCarousel(props) {
 			<Swiper onSwiper={setSwiperRef} slidesPerView={3}  loop={true} spaceBetween={30} pagination={{
 				"type": "fraction"
 			}} navigation={true} className="mySwiper">
-				{props.relatedArtists?.artists?.map((artist) => {
+				{props.relatedArtists?.artists?.map((artist, index) => {
 					return (
-						<SwiperSlide><img src={artist.images[0]?.url} alt=''/></SwiperSlide>
+						<SwiperSlide key={index}><img src={artist.images[0]?.url} alt=''/><h1 className='swiper-artist-name'>{artist.name}</h1></SwiperSlide>
 					)
-				})}
+				},)}
 			</Swiper>
 		</>
 	)

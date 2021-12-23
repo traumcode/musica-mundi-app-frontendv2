@@ -28,6 +28,7 @@ function ArtistDetails(props) {
 		let data = await getArtistReleases(props.location?.state?.artist.id, currentPage);
 		setArtistReleases(data?.releases);
 		setReleaseLoading(false);
+		console.log(data)
 
 
 		const data2 = await getArtistDetails(props.location.state?.artist.id);
@@ -57,7 +58,7 @@ function ArtistDetails(props) {
 	useEffect(() => {
 		setData(props, currentPage).then(r => console.log(r));
 	}, [ props, currentPage ]);
-	console.log(artistName.replaceAll("%20", " "))
+
 
 	return (
 		<div className="artist-details-content">
@@ -99,7 +100,24 @@ function ArtistDetails(props) {
 				<SwiperCarousel relatedArtists={relatedArtists}/>
 				{isLoading ? (<div><SkewLoader
 					color={"#3dffc6f5"} loading={isLoading} size={30}/></div>) : ("")}
-				<h1 style={{marginTop: '530px'}}>releases</h1>
+				<h1 style={{ marginTop: '530px' }}>releases</h1>
+				<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3" style={{ marginTop: '30px' }}>
+					{artistReleases ? (
+						artistReleases?.map((release, index) => {
+							return (
+								<div key={index} className="col">
+									<div className="card-release">
+										<div className="card-profile">
+											<img src={`${release.thumb}`} alt=""/>
+										</div>
+									</div>
+								</div>
+							)
+						})
+					) : ("NO RELEASES YET")}
+				</div>
+				{releaseLoading ? (<div><SkewLoader
+					color={"#3dffc6f5"} loading={isLoading} size={30}/></div>) : ("")}
 			</div>
 		</div>
 	);

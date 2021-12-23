@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import { Pulse, Pulse2 } from "./svgs/svgs";
+import { Pulse } from "./svgs/svgs";
 
 function Header(props) {
 	const [ currentPageTitle, setCurrentPageTitle ] = useState("");
@@ -61,26 +61,37 @@ function Header(props) {
 					<div className="title-effect2">
 						<h1 className="current-page-title2">WAVER</h1>
 					</div>
-					{/*<Pulse2/>*/}
 				</div>
 				<ul className="header-menu navbar-nav">
 					<Link className="header-link nav-item-s" to="/home">
-						<li><button className="offset" style={{border: "1px solid #3dffc6f5"}}>home</button></li>
+						<li>
+							<button className="offset" style={{ border: "1px solid #3dffc6f5" }}>home</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s " to="/discover">
-						<li><button className="slide">discover</button></li>
+						<li>
+							<button className="slide">discover</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/collections">
-						<li><button className="close">collections</button></li>
+						<li>
+							<button className="close">collections</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/manifest">
-						<li><button className="slide">manifest</button></li>
+						<li>
+							<button className="slide">manifest</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/magazine">
-						<li><button className="close">magazine</button></li>
+						<li>
+							<button className="close">magazine</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/magazine">
-						<li><button className="fill">magazine</button></li>
+						<li>
+							<button className="fill">magazine</button>
+						</li>
 					</Link>
 				</ul>
 			</div>

@@ -39,7 +39,7 @@ function Discover(props) {
 	const overrideLoadingBar = css`
      display: flex;
      margin: 0 0;
-	  flex-direction: row-reverse;
+     flex-direction: row-reverse;
      animation: animation-6rlus4 1s 0.1s infinite cubic-bezier(0, 1.81, 0.62, -0.16);
 	`;
 
@@ -114,7 +114,7 @@ function Discover(props) {
 				{isLoading ? (
 					<div className="loading-spinner">
 						<ScaleLoader
-							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} />
+							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1}/>
 						<ScaleLoader
 							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} css={overrideLoadingBar}/>
 					</div>
@@ -123,21 +123,21 @@ function Discover(props) {
 						{artists?.map((artist, index) => {
 							return (
 								<div key={index} className="col">
-									<Link to={`/artist/${artist.title}`} style={{
+									<Link to={{
+										pathname: `/artist/${artist.title}`,
+										state: {
+											artist: artist,
+											from: "discover",
+											page: currentPage,
+										},
+									}} style={{
 										color: '#258a6a',
 										textDecoration: 'none'
 									}}>
 										<div className="card">
-											<Link to={{
-												pathname: `/artist/${artist.title}`,
-												state: {
-													artist: artist,
-													from: "discover",
-													page: currentPage,
-												},
-											}} className="card-profile">
+											<div className="card-profile">
 												<img src={`${artist.cover_image}`} alt=""/>
-											</Link>
+											</div>
 											<div className="card-body">
 												<h5 className="">{artist.type}</h5>
 												<h2 className="card-text">{artist.title}</h2>
