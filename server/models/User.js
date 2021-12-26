@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
 	username: {
 		type:String,
-		require: true
+		default: ""
 	},
 	email: {
 		type:String,
@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema({
 		default: Date.now
 	},
 	bio: {
+		type:String,
+		default:""
+	},
+	picture: {
 		type:String,
 		default:""
 	}

@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../redux/actions/authActions";
+import classnames from "classnames";
+import { GoogleLogin } from "../utils/setAuthGoogle";
+
 
 class RegisterPage extends Component {
 	constructor(props) {
@@ -12,6 +19,13 @@ class RegisterPage extends Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps, nextContext) {
+		if (nextProps.errors) {
+			this.setState({
+				errors: nextProps.errors
+			});
+		}
+	}
 
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
@@ -25,15 +39,13 @@ class RegisterPage extends Component {
 			password: this.state.password,
 			password2: this.state.password2,
 		}
-
-
-		console.log(newUser);
-
+		this.props.registerUser(newUser, this.props.history);
 	}
 
 
 	render() {
 		const errors = this.state.errors;
+		console.log(errors)
 		return (
 			<div className="container login-container">
 				<div className="signInCard login-card">
@@ -43,36 +55,120 @@ class RegisterPage extends Component {
 						<h1>register</h1>
 						<p className="text-muted">please choose a name and a password</p>
 						<div>
-							<i className="bi bi-person-circle icon-register"/><input onChange={this.onChange}
-																										value={this.state.username}
-																										error={errors.username}
-																										type="text" id='username'
-																										placeholder="Username"/>
+							<i className="bi bi-person-circle icon-register"/>
+							<input
+								onChange={this.onChange}
+								value={this.state.username}
+								error={errors.username}
+								type="text"
+								className={classnames("", { invalid: errors.name })}
+								id='username'
+								placeholder="Username"/>
+							{
+								errors.username
+									? (<span
+										onClick={() => this.setState({
+											errors:
+
+												{
+													...errors,
+													username: ""
+												}
+										})}
+										className="error-text">{errors.username}</span>)
+									: ("")
+							}
+
 						</div>
-						<i className="bi bi-key icon-register-password"/><input onChange={this.onChange}
-																								  value={this.state.password}
-																								  error={errors.password}
-																								  type="password"
-																								  id="password"
-																								  placeholder="Password"/>
+						<i className="bi bi-envelope icon-register"/>
+						<input
+							onChange={this.onChange}
+							value={this.state.email}
+							error={errors.email}
+							type="email"
+							id="email"
+							className={classnames("", { invalid: errors.email })}
+							placeholder="Email"/>
+						{
+							errors.email
+								? (<span
+									onClick={() => this.setState({
+										errors:
+											{
+												username: this.state.errors.username,
+												email: "",
+												password: this.state.errors.password,
+												password2: this.state.errors.password2
+											}
+									})}
+									className="error-text">{errors.email}</span>)
+								: ("")
+						}
+						<i className="bi bi-key icon-register-password"/>
+						<input
 
-						<i className="bi bi-key icon-register-password-retype"/><input onChange={this.onChange}
-																											value={this.state.password2}
-																											error={errors.password2}
-																											id="password2"
-																											type="password"
-																											placeholder="Re-type password"/>
+							onChange={this.onChange}
+							value={this.state.password}
+							error={errors.password}
+							type="password"
+							id="password"
+							className={classnames("", {
+								invalid: errors.password
+							})}
+							placeholder="Password"/>
+						{
+							errors.password
+								? (<span
+									onClick={() => this.setState({
+										errors:
+											{
+												username: this.state.errors.username,
+												email: this.state.errors.email,
+												password: "",
+												password2: this.state.errors.password2
+											}
+									})}
+									className="error-text">{errors.password}</span>)
+								: ("")
+						}
 
-						<input type="submit" value="sign up" />
+						<i className="bi bi-key icon-register-password-retype"/>
+						<input
+							onChange={this.onChange}
+							value={this.state.password2}
+							error={errors.password2}
+							id="password2"
+							type="password"
+							className={classnames("", {
+								invalid: errors.password2
+							})}
+							placeholder="Re-type password"/>
+						{
+							errors.password2
+								? (<span
+									onClick={() => this.setState({
+										errors:
+											{
+												username: this.state.errors.username,
+												email: this.state.errors.email,
+												password: this.state.errors.password,
+												password2: ""
+											}
+									})}
+									className="error-text">{errors.password2}</span>)
+								: ("")
+						}
+						<input type="submit" value="sign up"/>
 						<div className="col-md-12">
 							<ul className="social-network social-circle">
+								<GoogleLogin />
 								<li><a href="https://muie.com" className="icoFacebook" title="Facebook"><i className="fab fa-facebook-f"/></a></li>
 								<li><a href="https://muie.com" className="icoTwitter" title="Twitter"><i className="fab fa-twitter"/></a></li>
-								<li><a href="https://muie.com" className="icoGoogle" title="Google +"><i className="fab fa-google-plus"/></a></li>
 							</ul>
 						</div>
-						<p className="text-muted">already have an account ? please <a href='/login'>log in</a></p>
+						<p className="text-muted" style={{margin: "15px"}}>already have an account ? please  <Link to='/login'>log in</Link></p>
 					</form>
+
 				</div>
 
 			</div>
@@ -80,4 +176,16 @@ class RegisterPage extends Component {
 	}
 }
 
-export default RegisterPage;
+RegisterPage.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+	auth: state.auth,
+	errors: state.errors
+});
+export default connect(
+	mapStateToProps,
+	{ registerUser }
+)(withRouter(RegisterPage));

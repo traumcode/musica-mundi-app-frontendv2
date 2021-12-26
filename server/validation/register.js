@@ -9,6 +9,7 @@ module.exports = function validateRegisterInput(data) {
 	data.password = !isEmpty(data.password) ? data.password : ""
 	data.password2 = !isEmpty(data.password2) ? data.password2 : ""
 	data.bio = !isEmpty(data.bio) ? data.bio : ""
+	data.picture = !isEmpty(data.picture) ? data.picture : ""
 
 	/* NAME CHECK */
 	if (Validator.isEmpty(data.username)) {

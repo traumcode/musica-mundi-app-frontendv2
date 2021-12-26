@@ -20,6 +20,7 @@ $dark:#000000;
   margin-bottom: 0;
   background: linear-gradient(to right, #ff304f00, #20c99759);
   border: 1px solid #17cfa0;
+  transform: scale(0.9);
 }
 
 .login-title {
@@ -66,6 +67,7 @@ h2 {
 }
 
 .box input[type="text"],
+.box input[type="email"],
 .box input[type="password"] {
   background: none;
   display: block;
@@ -81,6 +83,8 @@ h2 {
 
 .text-muted {
   color: #ffffff !important;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .box h1 {
@@ -89,12 +93,14 @@ h2 {
 }
 
 .box input[type="text"]:focus,
+.box input[type="email"]:focus,
 .box input[type="password"]:focus {
   width: 300px;
   border-color: $danger
 }
 
-.box input[type="submit"] {
+.box input[type="submit"],
+.box button[type="submit"]{
   background: none;
   display: block;
   margin: 20px auto;
@@ -107,12 +113,14 @@ h2 {
   cursor: pointer;
 }
 
-.box input[type="submit"]:hover {
+.box input[type="submit"]:hover,
+.box button[type="submit"]:hover{
   background: $warning;
 
 }
 
-.box input[type="submit"]:active {
+.box input[type="submit"]:active,
+.box button[type="submit"]:active{
   background: #358282;
   transition: 0.1s;
 }

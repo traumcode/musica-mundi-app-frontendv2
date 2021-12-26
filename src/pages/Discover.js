@@ -50,6 +50,7 @@ function Discover(props) {
 	useEffect(() => {
 		history.push(`/discover?artist=${searchArtist}&page=${currentPage}`)
 		getSearchDetailsAPI(searchArtist, searchGenre, searchStyle, currentPage).then((data) => {
+			console.log(data)
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
