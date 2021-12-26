@@ -6,6 +6,7 @@ export const getSearchDetailsAPI = async (artist, genre, style, page) => {
 
 	try {
 		const { data } = await axios.get(URL);
+		console.log(data)
 		return data;
 	} catch (error) {
 		console.log(error)

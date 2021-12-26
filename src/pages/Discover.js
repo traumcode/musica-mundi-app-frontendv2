@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { genresAPI, getSearchDetailsAPI } from "../apis/fetchData";
-import { useHistory, Link } from "react-router-dom";
-import BarLoader from "react-spinners/BarLoader";
+import { Link, useHistory } from "react-router-dom";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { css } from "@emotion/react";
+
 import SearchBar from "../components/SearchBar";
-import color from "color";
-import { Waves } from "../components/svgs/svgs";
 
 
 function Discover(props) {
@@ -36,6 +36,13 @@ function Discover(props) {
 		}
 	};
 
+	const overrideLoadingBar = css`
+     display: flex;
+     margin: 0 0;
+     flex-direction: row-reverse;
+     animation: animation-6rlus4 1s 0.1s infinite cubic-bezier(0, 1.81, 0.62, -0.16);
+	`;
+
 	const handlePages = (event, value) => {
 		setCurrentPage(value);
 	};
@@ -43,12 +50,11 @@ function Discover(props) {
 	useEffect(() => {
 		history.push(`/discover?artist=${searchArtist}&page=${currentPage}`)
 		getSearchDetailsAPI(searchArtist, searchGenre, searchStyle, currentPage).then((data) => {
+			console.log(data)
 			setResultsNumber(data.pagination?.items);
 			setArtist(data.results);
 			setPagesNumber(data.pagination?.pages);
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 2000)
+			setIsLoading(false);
 		});
 		return () => console.log("clear")
 	}, [ searchGenre, searchArtist, searchStyle, currentPage, history, searchStyles ]);
@@ -56,7 +62,6 @@ function Discover(props) {
 	return (
 		<div className="discover-content">
 			<h1>surf the waves ~</h1>
-			<Waves loading={isLoading}/>
 			<div className="discover-genres">
 				{Object?.values(genres).map((genre, index) => {
 					return (
@@ -109,23 +114,34 @@ function Discover(props) {
 			<div className="discover-results" style={isLoading ? { height: "100vh" } : { height: "100%" }}>
 				{isLoading ? (
 					<div className="loading-spinner">
-						<BarLoader
-							color={"#30daa8"} loading={isLoading} height={3} width={600}/>
+						<ScaleLoader
+							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1}/>
+						<ScaleLoader
+							color={"#30daa8"} loading={isLoading} height={80} width={10} radius={0} margin={1} css={overrideLoadingBar}/>
 					</div>
 				) : (
 					<div className="row row-cols-1 row-cols-sm-auto g-2 g-lg-3">
 						{artists?.map((artist, index) => {
 							return (
 								<div key={index} className="col">
-									<Link to={`/artist/${artist.title}`} style={{color: '#258a6a', textDecoration: 'none'}}>
+									<Link to={{
+										pathname: `/artist/${artist.title}`,
+										state: {
+											artist: artist,
+											from: "discover",
+											page: currentPage,
+										},
+									}} style={{
+										color: '#258a6a',
+										textDecoration: 'none'
+									}}>
 										<div className="card">
-											<Link to={`/artist/${artist.title}`} className="card-profile">
+											<div className="card-profile">
 												<img src={`${artist.cover_image}`} alt=""/>
-											</Link>
+											</div>
 											<div className="card-body">
-												<h5 className="" >{artist.type}</h5>
+												<h5 className="">{artist.type}</h5>
 												<h2 className="card-text">{artist.title}</h2>
-												<i className="bi bi-caret-right card-icon"/>"
 											</div>
 										</div>
 									</Link>

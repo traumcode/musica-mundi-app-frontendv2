@@ -10,12 +10,13 @@
 @import
 'pages/discovery',
 'pages/signin',
-'pages/404';
+'pages/404',
+'pages/artist-details',
+'pages/register';
 
-@import
-'components/loadingSpinner',
+@import 'components/loading-spinner',
 'components/card',
 'components/buttons',
 'components/search-bar',
-'components/svgs';
-
+'components/svgs',
+'components/swiper';

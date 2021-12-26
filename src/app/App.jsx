@@ -6,7 +6,11 @@ import Discover from "../pages/Discover";
 import './App.scss'
 import LoginPage from "../pages/LoginPage";
 import NotFound from "../pages/NotFound";
-
+import ArtistDetails from "../pages/ArtistDetails";
+import RegisterPage from "../pages/RegisterPage";
+import { Provider } from "react-redux";
+import store from "../redux/store/store";
+import Profile from "../pages/Profile";
 
 
 export function setMainStorage(Obj) {
@@ -18,7 +22,9 @@ export function setMainStorage(Obj) {
 
 function App() {
 	const [ currentPageTitle ] = useState("WAVr~");
-	require('dotenv').config();
+	require('dotenv')
+		.config();
+
 	useEffect(() => {
 		window.addEventListener("storage", () => {
 			let mainStorage = JSON.parse(window.localStorage.getItem("MainStorage") || "{}");
@@ -33,16 +39,24 @@ function App() {
 	}, [ currentPageTitle ])
 
 	return (
-		<Router>
-			<Switch>
-				<Route path="/signin" exact component={LoginPage}/>
-				<Layout currentPageTitle={currentPageTitle}>
-					<Route path={["/home", "/"]} exact component={Home}/>
-					<Route path="/discover" exact component={Discover}/>
-				</Layout>
-			</Switch>
-			<Route component={NotFound}/>
-		</Router>
+		<Provider store={store}>
+			<Router>
+				<Switch>
+					<Route exact path="/login" component={LoginPage}/>
+					<Route exact path="/register" component={RegisterPage}/>
+					<Layout currentPageTitle={currentPageTitle}>
+						<Switch>
+							<Route exact path={[ "/home", "/" ]} component={Home}/>
+							<Route exact path="/discover" component={Discover}/>
+							<Route exact path="/artist/:artistName" component={ArtistDetails}/>
+							<Route exact path="/:username/profile/" component={Profile}/>
+
+							<Route component={NotFound}/>
+						</Switch>
+					</Layout>
+				</Switch>
+			</Router>
+		</Provider>
 	);
 }
 

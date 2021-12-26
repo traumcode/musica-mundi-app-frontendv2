@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { Pulse } from "./svgs/svgs";
+import { useDispatch } from "react-redux";
 
 function Header(props) {
 	const [ currentPageTitle, setCurrentPageTitle ] = useState("");
-	const [ user ] = useState("s");
+	const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')));
+
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const location = useLocation();
+
+	const logout = () => {
+		dispatch({ type: 'LOGOUT' })
+		history.push('/')
+		setUser(null)
+	}
 
 
 	useEffect(() => {
-		console.log(window.location.pathname)
 		window.location.pathname === "/home" ? setCurrentPageTitle("waver~") : setCurrentPageTitle(window.location.pathname.replace("/", ""))
 		return () => console.log("Cleared")
 	}, [ window.location.pathname, currentPageTitle ])
 
-	const currentToLogo = (currentPageTitle) => {
-		const logos = {
-			"waver~": <i className="bi bi-house-door"/>,
-			"discover": <i className="fab fa-searchengin"/>,
-			"collections": <i className="bi bi-collection"/>,
-			"manifest": <i className="bi bi-chat-left-text"/>
-		}
-		return logos[`${currentPageTitle}`]
-	}
+	useEffect(() => {
+		const token = user?.token;
+		console.log(token)
+
+		//JWT
+		setUser(JSON.parse(localStorage.getItem('profile')))
+	}, [ location ])
+
+	console.log(user)
 	return (
 		<header>
 			<nav className="navbar">
@@ -29,15 +39,18 @@ function Header(props) {
 					<Pulse/>
 					<h1 className="navbar-title">{currentPageTitle}</h1>
 				</div>
+				{!user ? (
+					<ul className="navbar-nav-up-s">
+						<Link className="navbar-link" to="/login">
+							<li className="nav-item-s login-button"><i className="bi bi-box-arrow-in-right login-symbol" style={{ margin: "10px" }}/>log in
+							</li>
+						</Link>
+						<Link className="navbar-link" to="/register">
+							<li className="nav-item-s">
+								<button className='register-button'>register</button>
+							</li>
+						</Link>
 
-				{user === "" ? (
-					<ul className="navbar-nav-up">
-						<Link className="navbar-link" to="/collections">
-							<li className="nav-item">sign in</li>
-						</Link>
-						<Link className="navbar-link" to="/manifest">
-							<li className="nav-item">about us</li>
-						</Link>
 					</ul>) : (
 					<ul className="navbar-nav-up">
 						<Link className="navbar-link" to={`/${user}/profile/`}>
@@ -52,6 +65,9 @@ function Header(props) {
 						<Link className="navbar-link" to="/collections">
 							<li className="nav-item-s" style={{ fontSize: "calc(2rem + 0.4vw)" }}><i className="bi bi-list"/></li>
 						</Link>
+							<div className="nav-item-s">
+								<button onClick={logout} className='eject-logout-button'><i className="fas fa-eject"/></button>
+							</div>
 					</ul>
 				)}
 			</nav>
@@ -66,25 +82,38 @@ function Header(props) {
 				</div>
 				<ul className="header-menu navbar-nav">
 					<Link className="header-link nav-item-s" to="/home">
-						<li><button className="offset" style={{border: "1px solid #3dffc6f5"}}>home</button></li>
+						<li>
+							<button className="offset" style={{ border: "1px solid #3dffc6f5" }}>home</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s " to="/discover">
-						<li><button className="slide">discover</button></li>
+						<li>
+							<button className="slide">discover</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/collections">
-						<li><button className="close">collections</button></li>
+						<li>
+							<button className="close">collections</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/manifest">
-						<li><button className="slide">manifest</button></li>
+						<li>
+							<button className="slide">manifest</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/magazine">
-						<li><button className="close">magazine</button></li>
+						<li>
+							<button className="close">magazine</button>
+						</li>
 					</Link>
 					<Link className="header-link nav-item-s" to="/magazine">
-						<li><button className="fill">magazine</button></li>
+						<li>
+							<button className="fill">magazine</button>
+						</li>
 					</Link>
 				</ul>
 			</div>
+			<div className="red-bar"/>
 		</header>
 	);
 }
