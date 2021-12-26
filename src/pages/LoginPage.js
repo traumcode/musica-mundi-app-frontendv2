@@ -69,7 +69,6 @@ class LoginPage extends Component {
                   {errors.email}
 							{errors.emailnotfound}
                 </span>
-
 						<input
 							onChange={this.onChange}
 							value={this.state.password}
@@ -85,12 +84,11 @@ class LoginPage extends Component {
                   {errors.password}
 							{errors.passwordincorrect}
                 </span>
-
 						<a className="forgot text-muted" href="https://muie.com">forgot password?</a>
 						<input type="submit" value="login"/>
 						<div className="col-md-12">
 							<ul className="social-network social-circle">
-								<GoogleLogin />
+								<GoogleLogin/>
 								<li><a href="https://muie.com" className="icoFacebook" title="Facebook"><i className="fab fa-facebook-f"/></a></li>
 								<li><a href="https://muie.com" className="icoTwitter" title="Twitter"><i className="fab fa-twitter"/></a></li>
 							</ul>

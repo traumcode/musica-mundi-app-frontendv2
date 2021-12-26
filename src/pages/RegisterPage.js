@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/authActions";
-import classnames from "classnames";
 import { GoogleLogin } from "../utils/setAuthGoogle";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 
 class RegisterPage extends Component {
@@ -14,6 +14,7 @@ class RegisterPage extends Component {
 			username: "",
 			email: "",
 			password: "",
+			showPassword: false,
 			password2: "",
 			errors: {}
 		};
@@ -25,6 +26,10 @@ class RegisterPage extends Component {
 				errors: nextProps.errors
 			});
 		}
+	}
+
+	componentWillUpdate(nextProps, next) {
+		console.log(this.state)
 	}
 
 	onChange = e => {
@@ -45,7 +50,7 @@ class RegisterPage extends Component {
 
 	render() {
 		const errors = this.state.errors;
-		console.log(errors)
+
 		return (
 			<div className="container login-container">
 				<div className="signInCard login-card">
@@ -106,16 +111,18 @@ class RegisterPage extends Component {
 						}
 						<i className="bi bi-key icon-register-password"/>
 						<input
-
 							onChange={this.onChange}
 							value={this.state.password}
 							error={errors.password}
-							type="password"
+							type={this.state.showPassword ? "password" : "text"}
 							id="password"
 							className={classnames("", {
 								invalid: errors.password
 							})}
 							placeholder="Password"/>
+						<i onClick={() => this.setState({
+							showPassword: !this.state.showPassword
+						})} className="bi bi-eye eye-password"/>
 						{
 							errors.password
 								? (<span
@@ -131,7 +138,6 @@ class RegisterPage extends Component {
 									className="error-text">{errors.password}</span>)
 								: ("")
 						}
-
 						<i className="bi bi-key icon-register-password-retype"/>
 						<input
 							onChange={this.onChange}
@@ -161,12 +167,12 @@ class RegisterPage extends Component {
 						<input type="submit" value="sign up"/>
 						<div className="col-md-12">
 							<ul className="social-network social-circle">
-								<GoogleLogin />
+								<GoogleLogin/>
 								<li><a href="https://muie.com" className="icoFacebook" title="Facebook"><i className="fab fa-facebook-f"/></a></li>
 								<li><a href="https://muie.com" className="icoTwitter" title="Twitter"><i className="fab fa-twitter"/></a></li>
 							</ul>
 						</div>
-						<p className="text-muted" style={{margin: "15px"}}>already have an account ? please  <Link to='/login'>log in</Link></p>
+						<p className="text-muted" style={{ margin: "15px" }}>already have an account ? please <Link to='/login'>log in</Link></p>
 					</form>
 
 				</div>
