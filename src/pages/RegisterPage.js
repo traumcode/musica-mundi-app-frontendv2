@@ -28,13 +28,12 @@ class RegisterPage extends Component {
 		}
 	}
 
-	componentWillUpdate(nextProps, next) {
-		console.log(this.state)
-	}
+	handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword })
 
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	}
+
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -114,15 +113,18 @@ class RegisterPage extends Component {
 							onChange={this.onChange}
 							value={this.state.password}
 							error={errors.password}
-							type={this.state.showPassword ? "password" : "text"}
+							type={this.state.showPassword ? "text" :  "password"}
 							id="password"
 							className={classnames("", {
 								invalid: errors.password
 							})}
 							placeholder="Password"/>
-						<i onClick={() => this.setState({
-							showPassword: !this.state.showPassword
-						})} className="bi bi-eye eye-password"/>
+						{this.state.showPassword ? (<i onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye eye-password"/>): (<i onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye-slash eye-password"/>)}
+
 						{
 							errors.password
 								? (<span
