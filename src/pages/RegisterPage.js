@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/authActions";
-import classnames from "classnames";
 import { GoogleLogin } from "../utils/setAuthGoogle";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 
 class RegisterPage extends Component {
@@ -14,12 +14,18 @@ class RegisterPage extends Component {
 			username: "",
 			email: "",
 			password: "",
+			showPassword: false,
 			password2: "",
 			errors: {}
 		};
 	}
 
 	componentWillReceiveProps(nextProps, nextContext) {
+		if (nextProps.auth.isAuthenticated) {
+			this.props.history.push({
+				pathname: `/${localStorage.getItem("username")}/profile/`,
+			});
+		}
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors
@@ -27,9 +33,12 @@ class RegisterPage extends Component {
 		}
 	}
 
+	handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword })
+
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	}
+
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -45,7 +54,7 @@ class RegisterPage extends Component {
 
 	render() {
 		const errors = this.state.errors;
-		console.log(errors)
+
 		return (
 			<div className="container login-container">
 				<div className="signInCard login-card">
@@ -106,16 +115,21 @@ class RegisterPage extends Component {
 						}
 						<i className="bi bi-key icon-register-password"/>
 						<input
-
 							onChange={this.onChange}
 							value={this.state.password}
 							error={errors.password}
-							type="password"
+							type={this.state.showPassword ? "text" :  "password"}
 							id="password"
 							className={classnames("", {
 								invalid: errors.password
 							})}
 							placeholder="Password"/>
+						{this.state.showPassword ? (<i onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye eye-password"/>): (<i onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye-slash eye-password"/>)}
+
 						{
 							errors.password
 								? (<span
@@ -131,7 +145,6 @@ class RegisterPage extends Component {
 									className="error-text">{errors.password}</span>)
 								: ("")
 						}
-
 						<i className="bi bi-key icon-register-password-retype"/>
 						<input
 							onChange={this.onChange}
@@ -161,12 +174,12 @@ class RegisterPage extends Component {
 						<input type="submit" value="sign up"/>
 						<div className="col-md-12">
 							<ul className="social-network social-circle">
-								<GoogleLogin />
+								<GoogleLogin/>
 								<li><a href="https://muie.com" className="icoFacebook" title="Facebook"><i className="fab fa-facebook-f"/></a></li>
 								<li><a href="https://muie.com" className="icoTwitter" title="Twitter"><i className="fab fa-twitter"/></a></li>
 							</ul>
 						</div>
-						<p className="text-muted" style={{margin: "15px"}}>already have an account ? please  <Link to='/login'>log in</Link></p>
+						<p className="text-muted" style={{ margin: "15px" }}>already have an account ? please <Link to='/login'>log in</Link></p>
 					</form>
 
 				</div>

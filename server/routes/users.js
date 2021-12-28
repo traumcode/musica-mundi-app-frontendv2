@@ -27,7 +27,6 @@ router.post('/register-google', async (req, res) => {
 
 	const {username, email} = ticket.getPayload()
 
-	console.log(ticket)
 
 	const newUser = await new User({
 		where: {email:email},
