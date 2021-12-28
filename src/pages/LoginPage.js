@@ -12,11 +12,12 @@ class LoginPage extends Component {
 		this.state = {
 			email: "",
 			password: "",
+			showPassword: false,
 			errors: {}
 		};
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps, nextContext) {
 		if (nextProps.auth.isAuthenticated) {
 			this.props.history.push({
 				pathname: `/${localStorage.getItem("username")}/profile/`,
@@ -29,6 +30,8 @@ class LoginPage extends Component {
 		}
 	}
 
+	handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword })
+
 	onChange = e => { this.setState({ [e.target.id]: e.target.value }) };
 
 	onSubmit = e => {
@@ -37,7 +40,7 @@ class LoginPage extends Component {
 			email: this.state.email,
 			password: this.state.password
 		};
-		this.props.loginUser(userData);
+		this.props.loginUser(userData, this.props.history);
 	};
 
 
@@ -51,6 +54,7 @@ class LoginPage extends Component {
 					<form noValidate onSubmit={this.onSubmit} className="box">
 						<h1>log in</h1>
 						<p className="text-muted">please enter your login and password</p>
+						<i className="bi bi-envelope icon-register"/>
 						<input
 							onChange={this.onChange}
 							value={this.state.email}
@@ -64,26 +68,51 @@ class LoginPage extends Component {
 								invalid: errors.email || errors.emailnotfound
 							})}
 						/>
+						{
+							errors.email || errors.emailnotfound
+								? (<span
+									onClick={() => this.setState({
+										errors:
+											{
+												username: this.state.errors.username,
+												email: "",
+												password: this.state.errors.password,
+											}
+									})}
+									className="error-text">{errors.email || errors.emailnotfound}</span>)
+								: ("")
+						}
+						<i className="bi bi-key icon-register-password"/>
 
-						<span className="red-text">
-                  {errors.email}
-							{errors.emailnotfound}
-                </span>
 						<input
 							onChange={this.onChange}
 							value={this.state.password}
 							error={errors.password}
 							id="password"
-							type="password"
+							type={this.state.showPassword ? "text" :  "password"}
 							name="password"
 							className={classnames("", {
 								invalid: errors.password || errors.passwordincorrect
 							})}
 							placeholder="passssword"/>
-						<span className="red-text">
-                  {errors.password}
-							{errors.passwordincorrect}
-                </span>
+						{this.state.showPassword ? (<i style={{bottom: '317px'}} onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye eye-password"/>): (<i style={{bottom: '317px'}} onClick={() => {
+							this.handleShowPassword()
+						}} className="bi bi-eye-slash eye-password"/>)}
+						{errors.password || errors.passwordincorrect
+							? (
+								<span
+									onClick={() => this.setState({
+										errors:
+											{
+												username: this.state.errors.username,
+												email: this.state.errors.email,
+												password: "",
+											}
+									})}
+									className="error-text" style={{marginLeft:"-137px"}}>{errors.passwordincorrect}</span>
+							) : ("")}
 						<a className="forgot text-muted" href="https://muie.com">forgot password?</a>
 						<input type="submit" value="login"/>
 						<div className="col-md-12">

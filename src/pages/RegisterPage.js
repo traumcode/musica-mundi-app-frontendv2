@@ -21,6 +21,11 @@ class RegisterPage extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, nextContext) {
+		if (nextProps.auth.isAuthenticated) {
+			this.props.history.push({
+				pathname: `/${localStorage.getItem("username")}/profile/`,
+			});
+		}
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors
