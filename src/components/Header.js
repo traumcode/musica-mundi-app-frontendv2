@@ -25,7 +25,6 @@ function Header(props) {
 
 	useEffect(() => {
 		const token = user?.token;
-		console.log(token)
 
 		//JWT
 		setUser(JSON.parse(localStorage.getItem('profile')))

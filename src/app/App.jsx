@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 import store from "../redux/store/store";
 import Profile from "../pages/Profile";
 
-
 export function setMainStorage(Obj) {
 	const mainStorage = JSON.parse(localStorage.getItem("MainStorage") || "{}");
 	const newState = { ...mainStorage, ...Obj };

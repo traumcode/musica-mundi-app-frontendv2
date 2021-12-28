@@ -11,6 +11,8 @@ export const GoogleLogin = () => {
 		const result = res?.profileObj;
 		const token = res?.tokenId;
 
+	   console.log(result)
+
 		try {
 			dispatch({
 				type: "AUTH",

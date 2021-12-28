@@ -32,9 +32,9 @@ class LoginPage extends Component {
 
 	handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword })
 
-	onChange = e => { this.setState({ [e.target.id]: e.target.value }) };
+   handleOnChange = e => { this.setState({ [e.target.id]: e.target.value }) };
 
-	onSubmit = e => {
+	handleOnSubmit = e => {
 		e.preventDefault();
 		const userData = {
 			email: this.state.email,
@@ -51,12 +51,12 @@ class LoginPage extends Component {
 				<div className="signInCard login-card">
 					<h1 className="login-title"><i className="fab fa-napster"/></h1>
 					<h2 className="login-message">welcome surfer</h2>
-					<form noValidate onSubmit={this.onSubmit} className="box">
+					<form noValidate onSubmit={this.handleOnSubmit} className="box">
 						<h1>log in</h1>
 						<p className="text-muted">please enter your login and password</p>
 						<i className="bi bi-envelope icon-register"/>
 						<input
-							onChange={this.onChange}
+							onChange={this.handleOnChange}
 							value={this.state.email}
 							error={errors.email}
 							id="email"
@@ -85,7 +85,7 @@ class LoginPage extends Component {
 						<i className="bi bi-key icon-register-password"/>
 
 						<input
-							onChange={this.onChange}
+							onChange={this.handleOnChange}
 							value={this.state.password}
 							error={errors.password}
 							id="password"
@@ -125,7 +125,6 @@ class LoginPage extends Component {
 						<p className="text-muted">don't have account please <Link to='/register'>register</Link></p>
 					</form>
 				</div>
-
 			</div>
 		);
 	}
