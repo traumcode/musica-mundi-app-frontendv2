@@ -7,6 +7,7 @@ export const GoogleLogin = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
+
 	const handleLogin = async (res) => {
 		const result = res?.profileObj;
 		const token = res?.tokenId;
